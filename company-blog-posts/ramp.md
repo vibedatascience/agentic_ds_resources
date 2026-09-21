@@ -2,14 +2,14 @@
 
 ---
 
-## Meet Ramp Research: Our Agentic Data Analyst
+## 2025-09-18 - Meet Ramp Research: Our Agentic Data Analyst
 
 link: https://builders.ramp.com/post/meet-ramp-research
-authors: not individually bylined
+authors: Faiz Hilaly, Cesar Duran, Jay Sobel
 type: blog
 tags: text-to-sql, evals, semantic-layer, bi
 retrieved: 2026-09-21
-date: not shown on the page. The post says Ramp Research launched in early August.
+date: 2025-09-18
 
 ---
 
@@ -17,11 +17,17 @@ This article covers how we built Ramp Research, an AI agent that addressed our d
 
 Data questions don't exactly crash the system, but they quietly slow every decision. Each one becomes a ping in `#help-data`, stacking up behind a single on-call analyst. Tabs sprawl – across Looker, Snowflake, and dbt docs – and the answer lands hours later, after the decision window has narrowed.
 
+![Help Data Meme](assets/ramp/2025-09-18_meet-ramp-research/help-data-meme.png)
+
 This is the data bottleneck. The consequences are that decisions wait and most questions go unasked, as people hesitate to add to the growing queue of requests. This bottleneck is often treated as an inevitable byproduct of scale, but we don't accept that.
+
+![Analytics Bottleneck](assets/ramp/2025-09-18_meet-ramp-research/analytics-bottleneck.png)
 
 # Building Ramp Research
 
 Ramp Research is our in-house AI analyst agent, able to answer data* questions directly in Slack, 24/7, in minutes – not hours. Since launching in early August, Ramp Research has answered over 1,800 data questions across more than 1,200 conversations with 300 different users.
+
+![Ramp Research Channel Screenshot](assets/ramp/2025-09-18_meet-ramp-research/ramp-research-channel-screenshot.png)
 
 *\* Ramp Research does not have access to any personally identifiable information (PII).*
 
@@ -33,6 +39,8 @@ Even with the relevant data context, the agent struggled to connect its understa
 
 Scale remained the challenge. Our analytics warehouse has thousands of tables and views, and many questions require row-level inspection to get right. These requirements were perfect for an agentic solution. Rather than rely exclusively on generic compression methods, such as keyword or vector search, we gave the agent tools to inspect column values, branch, and backtrack – reasoning through the data the way a human analyst would.
 
+![Ramp Research Agent Architecture](assets/ramp/2025-09-18_meet-ramp-research/ramp-research-agent-architecture.png)
+
 ## Slack as an Interface
 
 Slack is our internal hub, so it was the obvious choice of interface for Ramp Research. The `#ramp-research-beta` channel now has 500+ members, many of whom have helped guide our development.
@@ -41,13 +49,21 @@ Slack is our internal hub, so it was the obvious choice of interface for Ramp Re
 
 Early on, users had to open Redash or Snowflake to inspect data and verify answers. We've added in-thread CSV previews so they can validate results without leaving Slack. This has been especially helpful to users less familiar with SQL and BI tools.
 
+![Ramp Research Response Screenshot](assets/ramp/2025-09-18_meet-ramp-research/ramp-research-response-screenshot.png)
+
 ### Multi-turn Conversations
 
 Making each thread stateful has allowed users to clarify intent, collaborate in threads, and reason through complex problems with Ramp Research as their data expert. The agent's performance also saw an end-to-end improvement as a result.
 
+![Ramp Research Multi-turn Conversation Screenshot](assets/ramp/2025-09-18_meet-ramp-research/ramp-research-multi-turn-conversation-screenshot.png)
+
 ### Beyond `#ramp-research-beta`
 
 Delivering Ramp Research as a Slack app has enabled teams to plug it into existing workflows, adding it to alert channels to diagnose failed transactions and project channels to scope out new features.
+
+![Alert Message Screenshot](assets/ramp/2025-09-18_meet-ramp-research/alert-message-screenshot.png)
+
+![Alert Response Screenshot](assets/ramp/2025-09-18_meet-ramp-research/alert-response-screenshot.png)
 
 ## Evaluations
 
@@ -61,7 +77,9 @@ So we built a Python mini-framework in our dbt project. It asserts not only on t
 
 Collapsing the cost of asking a question to near-zero changes who asks, when they ask, and what they ask. The result is a 10-20x increase in the number of questions people ask. Most of that growth comes from questions that previously died in drafts or never left someone's head.
 
-In the last 4 weeks, Ramp Research answered 1,476 questions in #ramp-research-beta, compared to 66 answered in #help-data.
+![Ramp Research Usage Chart](assets/ramp/2025-09-18_meet-ramp-research/ramp-research-usage-chart.png)
+
+*In the last 4 weeks, Ramp Research answered 1,476 questions in #ramp-research-beta, compared to 66 answered in #help-data.*
 
 That demand matters because small edges compound. Like counting cards, a one- or two-point lift in decision quality doesn't show up in the margin, but spread across thousands of pricing tweaks, GTM filters, and feature rollouts, it becomes material. We haven't changed the stakes of any single hand, but we've raised the floor on all of them.
 
