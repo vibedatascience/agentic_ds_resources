@@ -35,6 +35,7 @@ Keep `tags` to a short controlled set so they stay groupable. Current tags in us
 | GitHub | [github.md](github.md) | 1 | 2026-06-19 |
 | Meta | [meta.md](meta.md) | 1 | 2026-03-30 |
 | OpenAI | [openai.md](openai.md) | 1 | 2026-01-29 |
+| Snap | [snap.md](snap.md) | 1 | 2026-09-10 |
 
 ## Assets
 
