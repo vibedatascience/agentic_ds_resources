@@ -16,7 +16,7 @@ Only immediate children are listed here. Read the `README.md` inside each folder
 
 ## How to add an entry
 
-1. Pick the folder. A company post goes in `company-blog-posts/<company>.md`, a paper gets its own file in `papers/`, a project gets a row in `other-repos/README.md`.
+1. Pick the folder. A company post goes in `company-blog-posts/YYYY-MM-DD_<company>.md`, a paper gets its own file in `papers/`, a project gets a row in `other-repos/README.md`.
 2. Follow the entry format in that folder's `README.md`. Every entry carries a date, a link, and the source text as published.
 3. Do not add summaries or commentary. Archive what the source published.
 

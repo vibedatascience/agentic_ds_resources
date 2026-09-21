@@ -39,6 +39,8 @@ LLMs' generative abilities are a double-edged sword: the mechanisms that enable 
 
 Coding is an open-ended solution space that rewards the models' creativity, while documentation and tests provide natural guardrails against hallucination. In contrast, for analytics use cases, there's often only a single correct answer using a single correct source in which there's no deterministic way of proving the correctness.
 
+![Anthropic article illustration 1](assets/anthropic/article-0/image-01.png)
+
 For self-service agentic business analytics, the complexity mainly lies in the ambiguity of the data. The central problem comes down to our ability to map a user's question to specific and up-to-date entities in our data model and know the correct way of working with them. If we can do that, then the resulting execution and SQL becomes trivial.
 
 We've identified three attributes of this problem that account for an overwhelming majority of inaccurate responses:
@@ -61,11 +63,15 @@ At Anthropic, the main way we minimize these three errors is via our agentic dat
 
 In this section, we'll discuss how we built each layer.
 
+![Anthropic article illustration 2](assets/anthropic/article-0/image-02.png)
+
 > For ad-hoc questions asked directly in Slack, see how our data team deploys a data analytics agent with Claude Tag.
 
 ### Data foundations
 
 The most important aspect of ensuring analytics agents are accurate is via strong data foundations, which include the data models, transforms, tests, and tables in a data warehouse, along with the metadata describing them. Standard data engineering and data quality practices such as dimensional modeling, shift-left testing, freshness and completeness checks on critical pipelines all still apply (and we won't relitigate these).
+
+![Anthropic article illustration 3](assets/anthropic/article-0/image-03.png)
 
 Standard data engineering practices like dimensional modeling are just as important as they ever were.
 
@@ -202,14 +208,14 @@ This article was written by Chen Chang, Clement Peng, Justin Leder, Johanne Jiao
 
 ---
 
-## Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions
+## 2026-08-13 - Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions
 
 link: https://claude.com/blog/self-service-data-analytics-in-slack-how-anthropic-deploys-claude-tag-for-ad-hoc-questions
 authors: Clement Peng, Lily Zhao, with contributions from Josh Cherry and Michael Segner
 type: blog
 tags: text-to-sql, evals, semantic-layer, agent-harness
 retrieved: 2026-09-21
-date: not shown on the page. Follows the June 3, 2026 post.
+date: 2026-08-13
 
 ---
 
@@ -222,6 +228,8 @@ In our previous post, we described how we enabled Claude to answer data analytic
 That post focused on Claude Code (the primary development surface for our data scientists and data engineers), and best practices for improving agentic accuracy.
 
 This post discusses how the data team at Anthropic applies that foundation to where the rest of the company works using Claude Tag (public beta), which is the foundation for our data analytics agent in Slack. Anyone can ask it data-related questions and receive answers backed by the same governed definitions analysts use.
+
+![Anthropic article illustration 1](assets/anthropic/article-1/image-01.png)
 
 *Fictional recreation of a Claude Tag conversation for illustrative purposes. Details, names, and tools are not real.*
 
@@ -267,6 +275,8 @@ To account for these gaps, we wire Claude Tag into our internal knowledge index,
 
 The answer now would look like "sign-ups dropped 12% Tuesday: there was a payment-service incident open 9-11am that morning, and the dip is concentrated in the affected region."
 
+![Anthropic article illustration 2](assets/anthropic/article-1/image-02.png)
+
 If your organization has a knowledge graph, internal search, or even just well-organized incident and changelog feeds, connecting Claude Tag to them is the highest-leverage information you can add after the warehouse itself. You can also connect Claude Tag so it can read and get context from key channels across Slack.
 
 ### Permission the service account deliberately
@@ -299,6 +309,8 @@ We log a structured event for every question Claude Tag handles. This includes:
 
 This telemetry feeds two views. One tracks adoption or what fraction of agent queries route through the governed layer rather than ad hoc SQL by surface and domain. The other tracks correctness measured by the rate of 👎 reactions and corrections by domain. This is the online proxy for accuracy between eval runs.
 
+![Anthropic article illustration 3](assets/anthropic/article-1/image-03.png)
+
 The adoption metric turned out to be the single most actionable number we tracked. When it dips for a domain, it almost always means either a skill file has drifted or a new class of questions has appeared that the semantic layer doesn't cover.
 
 ### Claude Tag threads become the new meeting
@@ -310,6 +322,8 @@ For example, a data team member asked Claude why a revenue dashboard was taking 
 Claude notified the dashboard owner who decided to fix the cache immediately while handling the bug in a separate motion.
 
 The owner then asked what other dashboards had slowed, and it turned out dozens were impacted by the same caching error. Claude wrote the caching fix, the data team member reviewed it, and all impacted dashboards were functioning at full capacity in less than an hour.
+
+![Anthropic article illustration 4](assets/anthropic/article-1/image-04.png)
 
 *Fictional recreation of a Claude Tag conversation for illustrative purposes. Incident details, names, and tools are not real.*
 
@@ -333,6 +347,8 @@ Claude can also help design the loop. Ask @Claude what repetitive jobs it's seen
 You can allow Claude to be more proactive in any channel you choose, reading along and stepping in to help when needed. In one of our data channels over the last month, Claude Tag answered more than 75% of questions people posted, typically within a minute or two, even without being called.
 
 For example, an Anthropic team member asked in a public channel whether a dashboard included a new usage category. Within 90 seconds Claude answered how the data was defined, confirmed the new segment was missing, proposed a fix, and drafted a PR. A data scientist reviewed and approved. Claude then merged the PR and refreshed the dashboard.
+
+![Anthropic article illustration 5](assets/anthropic/article-1/image-05.png)
 
 *Fictional recreation of a Claude Tag conversation for illustrative purposes. Incident details, names, and tools are not real.*
 

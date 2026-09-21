@@ -2,7 +2,7 @@
 
 Engineering and product posts from companies building data science agents, analytics agents, text to SQL systems, and agentic notebooks.
 
-One file per company, named after the company in lowercase with hyphens: `databricks.md`, `google-cloud.md`. Files are append-only and reverse chronological, so the newest post sits at the top.
+One file per company, named `YYYY-MM-DD_company.md` using the latest archived post’s publication date. Update the filename and index links when adding a newer post. Files are append-only and reverse chronological, so the newest post sits at the top.
 
 A company gets its own file on its first entry. Do not create empty files in advance.
 
@@ -31,18 +31,18 @@ Keep `tags` to a short controlled set so they stay groupable. Current tags in us
 
 | Company | File | Entries | Latest post |
 |---|---|---|---|
-| Anthropic | [anthropic.md](anthropic.md) | 2 | 2026-06-03 |
-| Block | [block.md](block.md) | 1 | 2026-04-29 |
-| DoorDash | [doordash.md](doordash.md) | 1 | 2026-09-16 |
-| GitHub | [github.md](github.md) | 1 | 2026-06-19 |
-| Grab | [grab.md](grab.md) | 1 | 2026-08-01 |
-| Meta | [meta.md](meta.md) | 1 | 2026-03-30 |
-| OpenAI | [openai.md](openai.md) | 1 | 2026-01-29 |
-| Ramp | [ramp.md](ramp.md) | 1 | 2025-09-18 |
-| Snap | [snap.md](snap.md) | 1 | 2026-09-10 |
-| Spotify | [spotify.md](spotify.md) | 1 | 2026-06-10 |
-| Stripe | [stripe.md](stripe.md) | 1 | date not shown |
-| Vercel | [vercel.md](vercel.md) | 1 | 2025-12-22 |
+| Anthropic | [2026-08-13_anthropic.md](2026-08-13_anthropic.md) | 2 | 2026-08-13 |
+| Block | [2026-04-29_block.md](2026-04-29_block.md) | 1 | 2026-04-29 |
+| DoorDash | [2026-09-16_doordash.md](2026-09-16_doordash.md) | 1 | 2026-09-16 |
+| GitHub | [2026-06-19_github.md](2026-06-19_github.md) | 1 | 2026-06-19 |
+| Grab | [2026-08-01_grab.md](2026-08-01_grab.md) | 1 | 2026-08-01 |
+| Meta | [2026-03-30_meta.md](2026-03-30_meta.md) | 1 | 2026-03-30 |
+| OpenAI | [2026-01-29_openai.md](2026-01-29_openai.md) | 1 | 2026-01-29 |
+| Ramp | [2025-09-18_ramp.md](2025-09-18_ramp.md) | 1 | 2025-09-18 |
+| Snap | [2026-09-10_snap.md](2026-09-10_snap.md) | 1 | 2026-09-10 |
+| Spotify | [2026-06-10_spotify.md](2026-06-10_spotify.md) | 1 | 2026-06-10 |
+| Stripe | [2026-07-30_stripe.md](2026-07-30_stripe.md) | 1 | 2026-07-30 |
+| Vercel | [2025-12-22_vercel.md](2025-12-22_vercel.md) | 1 | 2025-12-22 |
 
 ## Assets
 
