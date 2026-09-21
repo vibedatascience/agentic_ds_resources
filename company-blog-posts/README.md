@@ -31,6 +31,9 @@ Keep `tags` to a short controlled set so they stay groupable. Current tags in us
 
 | Company | File | Entries | Latest post |
 |---|---|---|---|
+| DoorDash | [doordash.md](doordash.md) | 1 | Unverified |
+| GitHub | [github.md](github.md) | 1 | 2026-06-19 |
+| Meta | [meta.md](meta.md) | 1 | 2026-03-30 |
 | OpenAI | [openai.md](openai.md) | 1 | 2026-01-29 |
 
 ## Assets
