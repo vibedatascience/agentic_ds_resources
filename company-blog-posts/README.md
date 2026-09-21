@@ -31,11 +31,18 @@ Keep `tags` to a short controlled set so they stay groupable. Current tags in us
 
 | Company | File | Entries | Latest post |
 |---|---|---|---|
+| Anthropic | [anthropic.md](anthropic.md) | 2 | 2026-06-03 |
+| Block | [block.md](block.md) | 1 | 2026-04-29 |
 | DoorDash | [doordash.md](doordash.md) | 1 | 2026-09-16 |
 | GitHub | [github.md](github.md) | 1 | 2026-06-19 |
+| Grab | [grab.md](grab.md) | 1 | 2026-08-01 |
 | Meta | [meta.md](meta.md) | 1 | 2026-03-30 |
 | OpenAI | [openai.md](openai.md) | 1 | 2026-01-29 |
+| Ramp | [ramp.md](ramp.md) | 1 | date not shown |
 | Snap | [snap.md](snap.md) | 1 | 2026-09-10 |
+| Spotify | [spotify.md](spotify.md) | 1 | 2026-06-10 |
+| Stripe | [stripe.md](stripe.md) | 1 | date not shown |
+| Vercel | [vercel.md](vercel.md) | 1 | 2025-12-22 |
 
 ## Assets
 
