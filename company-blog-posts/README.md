@@ -33,11 +33,14 @@ Keep `tags` to a short controlled set so they stay groupable. Current tags in us
 |---|---|---|---|
 | Anthropic | [2026-08-13_anthropic.md](2026-08-13_anthropic.md) | 2 | 2026-08-13 |
 | Block | [2026-04-29_block.md](2026-04-29_block.md) | 1 | 2026-04-29 |
+| Clay | [2026-09-30_clay.md](2026-09-30_clay.md) | 1 | 2026-09-30 |
 | DoorDash | [2026-09-16_doordash.md](2026-09-16_doordash.md) | 1 | 2026-09-16 |
 | GitHub | [2026-06-19_github.md](2026-06-19_github.md) | 1 | 2026-06-19 |
 | Grab | [2026-08-01_grab.md](2026-08-01_grab.md) | 1 | 2026-08-01 |
+| Kikoff | [2026-03-27_kikoff.md](2026-03-27_kikoff.md) | 1 | 2026-03-27 |
 | Meta | [2026-03-30_meta.md](2026-03-30_meta.md) | 1 | 2026-03-30 |
 | OpenAI | [2026-01-29_openai.md](2026-01-29_openai.md) | 1 | 2026-01-29 |
+| Pinecone | [2026-06-02_pinecone.md](2026-06-02_pinecone.md) | 1 | 2026-06-02 |
 | Ramp | [2025-09-18_ramp.md](2025-09-18_ramp.md) | 1 | 2025-09-18 |
 | Snap | [2026-09-10_snap.md](2026-09-10_snap.md) | 1 | 2026-09-10 |
 | Spotify | [2026-06-10_spotify.md](2026-06-10_spotify.md) | 1 | 2026-06-10 |

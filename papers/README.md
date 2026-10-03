@@ -31,4 +31,4 @@ No summaries and no commentary. For a benchmark, keep the leaderboard table as p
 
 | Date | Title | Type | Tags |
 |---|---|---|---|
-| | | | |
+| 2026-08-05 | [A/B Agent: A Self-Evolving Agent for Strategy Iteration in Industrial A/B Testing](2026-08-05_ab-agent-kuaishou.md) | paper | agent-harness, evals |
