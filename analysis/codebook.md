@@ -1,8 +1,18 @@
 # Codebook
 
-Status: **draft after pilot, awaiting Rahul's OK.** Freeze on approval. Every change from the brief's schema is listed in `LOG.md`.
+Status: **frozen 2026-10-08** after Rahul's OK on the pilot. Every change from the brief's schema is listed in `LOG.md`.
 
-Pilot posts: OpenAI, Ramp, DoorDash. Pilot rows are in `coding.csv`.
+Pilot posts: OpenAI, Ramp, DoorDash.
+
+## Scope decisions
+
+| Company | How it is coded |
+|---|---|
+| Anthropic | Both posts, as one system |
+| Grab | All analytics agents in the post together (Spartan, Scarlet, RCA commentary, BriX apps) |
+| Kikoff | Kept; the system reviews experiment readouts |
+| Pinecone | AskData only. Nexus is coded where the post says AskData runs on it; the public demo repo is not coded |
+| Stripe | Only statements about data work, plus platform features that apply to every Kai session (interfaces, harness, access control) |
 
 ## General rules
 
@@ -91,9 +101,10 @@ What knowledge the agent draws on. Pick all that apply.
 | past queries | query history, query logs, labeled or example queries, question-SQL pairs |
 | code repos | pipeline code, dbt or transformation code, codebases |
 | past analyses or docs | existing documents, wikis, Slack threads, notebooks, prior reports |
-| human-written domain notes | free-form notes people write for the agent: glossaries, gotchas, domain docs, rules, user-written memories |
+| human-written domain notes | free-form notes people write for the agent: glossaries, gotchas, domain docs, rules, instructions |
+| saved corrections or memory | corrections or learnings stored from past conversations and reused later, whether the agent or a person writes them |
 
-Rule: memories the agent saves by itself are not `human-written domain notes`. Code them only where the post says people write or edit them.
+Rule: anything the post calls memory, or corrections harvested from conversations, goes to `saved corrections or memory`, not `human-written domain notes`. Value added after the pilot.
 
 - Counts (domain notes): "we relied on domain owners to write up technical documentation on their respective areas" (Ramp)
 - Does not count (code repos): "At Ramp, that context lives in dbt, Looker, and Snowflake." (names tools that hold metadata; does not say the agent reads code)
@@ -139,7 +150,7 @@ How the team measures quality. Pick all that apply, or `none described`.
 | user feedback | user ratings, reactions or corrections are collected as a quality signal |
 | none described | the post describes no evaluation |
 
-Rules: `LLM judge` needs the words LLM, model or an equivalent; a "grader" alone is not enough. People writing or vetting eval cases is not `human review`.
+Rules: `LLM judge` needs the post to say an LLM or model grades, or that an automated grader writes an explanation with its score (OpenAI's Evals grader). A grader that only compares outputs is not a judge. People writing or vetting eval cases is not `human review`.
 
 - Counts (LLM judge): "The final responses are scored with an LLM judge across three criteria" (DoorDash)
 - Does not count (human review): "a human-in-the-loop system in Slack that pinged domain owners for every in-domain question. This solution didn't scale" (abandoned; G4)
@@ -164,7 +175,7 @@ Features that help users trust or check answers. Pick all that apply.
 
 | Value | Code when the post says... |
 |---|---|
-| shows its SQL or code | the answer includes or links to the query or code that produced it |
+| shows its work | the answer includes or links to the SQL or code that produced it, its steps or assumptions, or a preview of the result data (renamed from "shows its SQL or code" after the pilot) |
 | cites sources | the answer names or links the tables, docs, results or source tiers it used |
 | access permissions enforced | the agent's data access is limited, by user permissions or by a fixed scope for the agent |
 | human approval step | a person approves the agent's plan, query, action or output before it runs or is used |
@@ -179,7 +190,7 @@ Rule: approval of changes to the knowledge base is not a `human approval step` (
 
 Up to 3 lessons the authors state. Value = a short tag; quote = the lesson verbatim.
 
-Rule: take lessons only from a section titled lessons, learnings or takeaways, or from a sentence where the authors say they learned, found, discovered or realized something. Otherwise `not stated`.
+Rule: take lessons only from a section titled lessons, learnings or takeaways, or from a sentence where the authors say they learned, found, discovered or realized something, or call it a lesson. Otherwise `not stated`. When there are more than 3, take lessons-section items first, then the framed sentences, each in post order.
 
 - Counts: "We also discovered that highly prescriptive prompting degraded results." (OpenAI)
 - Does not count: "Collapsing the cost of asking a question to near-zero changes who asks, when they ask, and what they ask." (Ramp; an observation, not framed as a lesson)

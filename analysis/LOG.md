@@ -68,6 +68,46 @@ The 12 fields and their value lists are unchanged. These are added definitions a
 5. OK with screenshots as evidence for Interface, Tools and Trust measures only?
 6. Scope questions in `inventory.md` (Pinecone, Anthropic, Stripe, Grab, Kikoff).
 
+## 2026-10-08: Codebook frozen
+
+Rahul approved the pilot and all 5 proposals ("sure"). Applied:
+
+| # | Change | Pilot rows changed |
+|---|---|---|
+| 14 | Trust value "shows its SQL or code" renamed "shows its work" (SQL, code, steps, assumptions or result previews) | OpenAI +1 (assumptions and steps); Ramp row now cites the CSV previews text instead of the screenshot |
+| 15 | New context source value "saved corrections or memory" | OpenAI memory moved from human-written domain notes |
+| 16 | `LLM judge` also covers an automated grader that writes an explanation with its score | OpenAI +1 |
+| 17 | Users rule (one widest value plus executives) and screenshot rule (Interface, Tools, Trust only) kept | none |
+| 18 | Scope: keep all 15 companies; coding limits per company are in `codebook.md` | none |
+
+The scope limits for Pinecone, Stripe and Grab were not spelled out in Rahul's reply. They are the defaults stated in the reply to him and can be revisited.
+
+## 2026-10-08: Step 3, all 15 companies coded
+
+- 402 rows in `coding.csv`. All 15 companies have all 12 fields. `check_quotes.py`: 0 problems. Diagram and screenshot rows (Ramp users, Ramp SQL, Meta sources and confidence) checked by eye against the image files.
+- Codebook clarification (no change of meaning): when a post states more than 3 lessons, take lessons-section items first, then sentences framed as "we found/learned" or called a lesson, in post order. DoorDash recoded under it: the "strong indicator" sentence is out; two "We found" sentences are in.
+- Most common "not stated": models named (9 of 15), evaluation size or quality (9 of 15).
+
+### Hard cases in step 3
+
+| Company | Field | Decision | Alternative |
+|---|---|---|---|
+| Block | interface | `not stated`; the only surface named is "Goose" in a diagram and "our internal AI platform" in text, neither mapping to a value | Code as `Slack or chat app` |
+| Kikoff | interface | `not stated`; results are posted as Notion comments, which fit no value | Add an interface value for docs tools |
+| Kikoff | users | `data team only`; the post frames it as tooling for DS peer reviewers | `not stated` |
+| Kikoff | eval_method | `human review` from iterating on cases "where the output was wrong or vague" | `none described` |
+| Meta | interface | `not stated`; screenshots show a UI but no label says web, Slack or IDE | `web app` |
+| Spotify | users | `analysts and PMs` because over a quarter of users never wrote SQL; no roles named | `not stated` |
+| Spotify | eval_method | Conversations and feedback shown to cluster owners coded as both `human review` and `user feedback` | `user feedback` only |
+| Stripe | task_scope, tools | SQL coded from the intro's list of workflows Kai was built for ("querying data warehouses") | `not stated` |
+| Stripe | context_sources | "context about data quality and our analytics layer" not coded as semantic layer | `metric definitions or semantic layer` |
+| Snap | users | `all employees` from skills "curated for the whole company" powering a hosted app | `analysts and PMs`; the post centers on data scientists |
+| Snap | task_scope | SQL coded from "the cost check dry-runs the query before execution" | `not stated` |
+| Anthropic | context_sources | Past queries not coded: the post says the agent should not read query history directly | `past queries` |
+| Grab | main_lesson | `not stated`; "Context sets an agent's ceiling" is followed by "Realising the criticality of this" in the next sentence, not the same one | Code it |
+| Pinecone | users | `not stated`; the post names channels, not users or roles | |
+| Block | adoption | Text says 1,812 and 1,899 Q1 2026 users; the chart shows 1,938 and 2,770. Text coded, mismatch noted in the value | |
+
 ## Not included
 
 Posts referred to inside the corpus. Not fetched and not added.

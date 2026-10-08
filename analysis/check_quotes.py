@@ -49,7 +49,7 @@ def main(path, write):
     for n, r in enumerate(rows, start=2):
         q, loc = r["quote"], r["location"]
         if not q:
-            if r["value"] != "not stated":
+            if r["value"] not in ("not stated", "none described"):
                 print(f"row {n}: {r['company']}/{r['field']}: value without quote"); errors += 1
             continue
         words = len(q.split())
