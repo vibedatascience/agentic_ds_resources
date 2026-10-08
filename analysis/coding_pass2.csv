@@ -1,0 +1,431 @@
+company,field,value,quote,location
+Anthropic,users,all employees,Anyone can ask it data-related questions and receive answers backed by the same governed definitions analysts use.,Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Intro
+Anthropic,interface,Slack or chat app,This post discusses how the data team at Anthropic applies that foundation to where the rest of the company works using Claude Tag (public beta),Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Intro
+Anthropic,interface,IDE or terminal,That post focused on Claude Code (the primary development surface for our data scientists and data engineers),Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Intro
+Anthropic,interface,BI tool,"the same skill must provide the same answer to questions in Slack, in the IDE, in a dashboard tool, and in standalone agent sessions.",How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,task_scope,answer a question with SQL,"clarify the question, find sources (via the knowledge skill), run the query, and then loop the result through adversarial review sub-agents.",How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,task_scope,multi-step analysis,"If a KPI moves unexpectedly, Claude provides likely explanations: a holiday effect? an upstream data change? and checks them before anyone opens a dashboard.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Claude Tag handles repetitive tasks
+Anthropic,task_scope,experiment review,"When we're monitoring a launch or an experiment, Claude provides readouts multiple times a day.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Claude Tag handles repetitive tasks
+Anthropic,task_scope,dashboard or report creation,"Proactive Readouts: Claude provides a summary before a weekly standup: what moved last week, how it compares to the week prior, and what's worth noting.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Claude Tag handles repetitive tasks
+Anthropic,task_scope,other: forecasting,"Forecasting: when and how to fit a simple trend, seasonality assumptions, and when to refuse because a series is too short or too noisy.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Give the agent skills beyond knowing what to query
+Anthropic,task_scope,other: pipeline monitoring,"If a pipeline fails, Claude starts investigating, drafts a fix, and pings the person on call.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Claude Tag handles repetitive tasks
+Anthropic,models_named,Claude [production],"At Anthropic, 95% of business analytics queries are automated via Claude, with ~95% accuracy in aggregate.",How Anthropic enables self-service data analytics with Claude > Intro
+Anthropic,context_sources,table and column docs,"column and table descriptions, canonical metric definitions, grain documentation, valid value ranges, lineage, ownership, and model tiering",How Anthropic enables self-service data analytics with Claude > Data foundations
+Anthropic,context_sources,metric definitions or semantic layer,Semantic layer: the compiled metric and dimension definitions.,How Anthropic enables self-service data analytics with Claude > Sources of truth
+Anthropic,context_sources,past queries,"Query corpus: historical SQL from dashboards, notebooks, and prior analyses.",How Anthropic enables self-service data analytics with Claude > Sources of truth
+Anthropic,context_sources,past analyses or docs,"We pipe in a company knowledge graph consisting of indexed docs, roadmaps, decision logs, and our organizational structure",How Anthropic enables self-service data analytics with Claude > Sources of truth
+Anthropic,context_sources,human-written domain notes,"here are ~30 reference files for this domain describing the relevant tables, columns, joins and gotchas.",How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,context_sources,saved corrections or memory,"A scheduled agent scans stakeholder channels every few hours for similar correction language, drafts a one-line fix to the relevant reference doc",How Anthropic enables self-service data analytics with Claude > Online validation
+Anthropic,context_delivery,curated files the agent reads,Claude Tag's runtime mounts our data repo's skills/ directory and re-reads it on every conversation.,Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Refresh skills as often as you refresh your data models
+Anthropic,context_delivery,tool calls or MCP,is served directly as resources over MCP.,How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,context_delivery,retrieval search,"When the agent sees a metric move, it can search that index for contemporaneous context","Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Connect to business context, not just the warehouse"
+Anthropic,tools,SQL execution,"Claude Tag queries your warehouse as a service account, not as the human who asked the question.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Permission the service account deliberately
+Anthropic,tools,search over docs,"When the agent sees a metric move, it can search that index for contemporaneous context","Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Connect to business context, not just the warehouse"
+Anthropic,tools,chart creation,"Charting: visualization conventions like which chart type to use for which question, color palettes, and when a table is clearer than a plot.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Give the agent skills beyond knowing what to query
+Anthropic,tools,other: semantic layer query,"If a question maps cleanly to a defined metric, the agent calls a function and gets one number",How Anthropic enables self-service data analytics with Claude > Sources of truth
+Anthropic,tools,other: review sub-agents,"run the query, and then loop the result through adversarial review sub-agents.",How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,tools,other: drafts PRs,"Claude answered how the data was defined, confirmed the new segment was missing, proposed a fix, and drafted a PR.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Stepping in when needed
+Anthropic,eval_method,fixed question set with known answers,"One way of addressing this gap is via offline evals, which are simple question / answer pairs.",How Anthropic enables self-service data analytics with Claude > Offline evaluations
+Anthropic,eval_method,user feedback,The other tracks correctness measured by the rate of 👎 reactions and corrections by domain.,Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Instrument every answer
+Anthropic,eval_size_quality,without skills: at most 21% accuracy,"Without skills, Claude's ability to answer analytics questions accurately didn't exceed 21% on our evals.",How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,eval_size_quality,"with skills: above 95% overall, ~99% in some domains",Adding skills gets these numbers consistently above 95% in aggregate and regularly around 99% in certain domains.,How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,eval_size_quality,offline accuracy drifted from ~95% to ~65% in a month,We watched our offline accuracy drift from ~95% at launch to ~65% over a month before we treated this as an engineering problem.,How Anthropic enables self-service data analytics with Claude > Skills
+Anthropic,eval_size_quality,raw query corpus access moved accuracy under 1 point,Accuracy moved by less than a point in either direction.,How Anthropic enables self-service data analytics with Claude > Ablation techniques
+Anthropic,eval_size_quality,"adversarial review: +6% accuracy, +32% tokens, +72% latency","increased accuracy by 6% within our eval set, but at the cost of 32% more tokens and 72% higher latency.",How Anthropic enables self-service data analytics with Claude > Online validation
+Anthropic,eval_size_quality,eval set size: a few dozen per topic,"we've found there are diminishing returns past a few dozen per topic (e.g., ""growth""), and that ceiling drops with each new model generation.",How Anthropic enables self-service data analytics with Claude > Offline evaluations
+Anthropic,adoption,95% of business analytics queries automated,"At Anthropic, 95% of business analytics queries are automated via Claude, with ~95% accuracy in aggregate.",How Anthropic enables self-service data analytics with Claude > Intro
+Anthropic,adoption,answered over 75% of questions in one data channel,"In one of our data channels over the last month, Claude Tag answered more than 75% of questions people posted",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Stepping in when needed
+Anthropic,trust_measures,cites sources,Provenance footer: every response carries a footer that contains which source tier it came from,How Anthropic enables self-service data analytics with Claude > Online validation
+Anthropic,trust_measures,access permissions enforced,Scope the service account to governed data only.,Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Permission the service account deliberately
+Anthropic,trust_measures,human approval step,explicit human sign-off on anything leadership-bound,How Anthropic enables self-service data analytics with Claude > Online validation
+Anthropic,trust_measures,confidence or warnings,"We also surface any data quality warnings in the answer's footer, so a stale-data alert appears next to the number rather than being invisible.",Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Instrument every answer
+Anthropic,main_lesson,governance must be enforced,We've found the foundations only hold if the canonical models and metric definitions are enforced by tooling,How Anthropic enables self-service data analytics with Claude > Data foundations
+Anthropic,main_lesson,raw query history barely helps,"In practice, we found that giving the agent raw retrieval access to thousands of prior queries moved accuracy by less than a point",How Anthropic enables self-service data analytics with Claude > Sources of truth
+Anthropic,main_lesson,few dozen evals per topic suffice,"we've found there are diminishing returns past a few dozen per topic (e.g., ""growth""), and that ceiling drops with each new model generation.",How Anthropic enables self-service data analytics with Claude > Offline evaluations
+Block,users,all employees,"Query Expert disseminates institutional data knowledge to all employees by providing data context, table information, and best query practices at scale.",Proving Value: Query Expert MCP
+Block,users,executives,allow leadership to get immediate answers to custom data questions,Intro
+Block,interface,not stated,,
+Block,task_scope,answer a question with SQL,the system retrieves pre-approved SQL logic from the semantic layer and runs that SQL without revealing it to the LLM.,What We Tried First (and What We Learned)
+Block,task_scope,multi-step analysis,"follow up with an ad-hoc investigation into the underlying data (routed through Query Expert MCP), all in the same session.",Separate but Synergistic
+Block,task_scope,other: data discovery,"Value comes from generating novel SQL, but also unblocking data discovery, understanding data nuances and finding data domain experts to consult with.",Proving Value: Query Expert MCP
+Block,task_scope,other: finding data experts,"Value comes from generating novel SQL, but also unblocking data discovery, understanding data nuances and finding data domain experts to consult with.",Proving Value: Query Expert MCP
+Block,models_named,not stated,,
+Block,context_sources,table and column docs,"enriched the tables with semantic descriptions based on Slack history, GitHub lineage, docs and sample queries.",Institutional Data Knowledge at Scale
+Block,context_sources,metric definitions or semantic layer,"a governed semantic layer, powered by Metricflow, that serves as the central source of truth for metric definitions across Block.",Block Data MCP: Trusted Metrics for Business Users
+Block,context_sources,past queries,find historical queries written by the people who know the data best,Query Expert MCP: Exploratory Analysis for Technical Users
+Block,context_sources,human-written domain notes,Data teams can create and add data domain specific knowledge that is embedded into a vector database to be semantically retrieved by the agent.,Institutional Data Knowledge at Scale
+Block,context_sources,past analyses or docs,unstructured IR documents (via a separate document intelligence component built on Glean MCP).,"40 Questions, 100% Accuracy"
+Block,context_delivery,retrieval search,"It curates historical data scientists' query patterns, data context and table schemas in a RAG architecture for the LLM to search, validate, and generate SQL.",What We Tried First (and What We Learned)
+Block,context_delivery,tool calls or MCP,The MCP itself is built as a set of structured tools that an AI agent can call,Block Data MCP: Trusted Metrics for Business Users
+Block,tools,SQL execution,the system retrieves pre-approved SQL logic from the semantic layer and runs that SQL without revealing it to the LLM.,What We Tried First (and What We Learned)
+Block,tools,search over docs,"search for metrics by keyword, retrieve metric details (including governance level, owner, and available dimensions)",Block Data MCP: Trusted Metrics for Business Users
+Block,tools,other: SQL validation,"Most useful, these queries validate any LLM generated queries to ensure standard SQL logic is followed",Institutional Data Knowledge at Scale
+Block,tools,other: permission check,"discover existing dashboards and reports, check user permissions, and submit feedback.",Block Data MCP: Trusted Metrics for Business Users
+Block,tools,other: feedback submission,"discover existing dashboards and reports, check user permissions, and submit feedback.",Block Data MCP: Trusted Metrics for Business Users
+Block,eval_method,fixed question set with known answers,We categorized them by complexity and used them as both a development target and an evaluation framework.,"40 Questions, 100% Accuracy"
+Block,eval_method,user feedback,Users submit feedback directly through Block Data MCP and Query Expert MCP.,Agentic Automations
+Block,eval_size_quality,40 finance leadership questions,We started by collecting 40 real business questions that Block's finance and strategy leadership actually asks on a recurring basis.,"40 Questions, 100% Accuracy"
+Block,eval_size_quality,100% accuracy where metric available via Block Data MCP,achieved 100% accuracy for questions where the metric was available through Block Data MCP.,"40 Questions, 100% Accuracy"
+Block,adoption,"Query Expert users 700 to 2.1K per month, over 33% of company","the number of employees using Query Expert increased from 700 to 2.1K per month, representing over 33% of the company.",Proving Value: Query Expert MCP
+Block,adoption,"1,812 and 1,899 quarterly unique users by Q1 2026","Block Data MCP reached 1,812 unique users and Query Expert MCP reached 1,899",Measuring Impact
+Block,adoption,87% reduction in analyst time,The results showed an 87% reduction in analyst time.,Measuring Impact
+Block,adoption,40 questions: 7.6 hours to under 1 hour,"In the Finance Copilot pilot, answering the 40 key business questions through the traditional analyst workflow took 7.6 hours.",Measuring Impact
+Block,trust_measures,shows its work,"The report includes the proposed SQL, a list of expert users who write similar queries, and related tables to explore.",Query Expert MCP: Exploratory Analysis for Technical Users
+Block,trust_measures,confidence or warnings,"The system tells you not just what the number is, but how much you should trust it.",Block Data MCP: Trusted Metrics for Business Users
+Block,trust_measures,access permissions enforced,"Both tools share the same Snowflake permissions layer (RBAC), ensuring that users only see data they are authorized to access",Separate but Synergistic
+Block,main_lesson,separate paths per user intent,Trying to serve every persona through one interface produced a tool that was unreliable to one audience and constraining to the other.,If You're Building Something Similar
+Block,main_lesson,start with small targeted problems,"A narrow, opinionated success criterion gave us a finish line we could measure against.",If You're Building Something Similar
+Block,main_lesson,"centralize standards, distribute ownership",Federated computational governance is what let us go from a handful of pilot domains to a company-wide platform.,If You're Building Something Similar
+Clay,users,all employees,30%-40% of the company is using it on a weekly basis.,monty's reception
+Clay,interface,Slack or chat app,We built it to live where people already work: Slack.,"Meet monty, Clay’s self-serve analytics agent"
+Clay,task_scope,answer a question with SQL,"If monty can’t answer from skills or metrics, it falls back to writing ad-hoc queries against approved dbt models.","Ingredient 3: guided, hierarchical context navigation"
+Clay,task_scope,other: statistical inference,Some data scientists even do lightweight statistical inference and regression modeling with monty.,monty's reception
+Clay,models_named,Opus [production],"monty is an analytics agent, built on Vercel’s eve framework, running Opus for inference.","Meet monty, Clay’s self-serve analytics agent"
+Clay,context_sources,table and column docs,"Because it can read each model’s SQL, documentation, and lineage, it has proper context to choose the correct tables and joins.","Ingredient 3: guided, hierarchical context navigation"
+Clay,context_sources,metric definitions or semantic layer,"it reads the metric’s context file, learns the correct definition, joins to our dimensions table, and computes the metric on the fly.","Ingredient 3: guided, hierarchical context navigation"
+Clay,context_sources,code repos,"At the beginning of every session, monty copies our codebase into its filesystem.",Ingredient 2: code as the context layer
+Clay,context_sources,past analyses or docs,"Our dbt models, Dagster implementation, agent skills, Streamlit dashboards, notebook analyses, and documentation all live in a monolithic codebase",Ingredient 2: code as the context layer
+Clay,context_sources,human-written domain notes,"Skills: Skills are a predefined playbook to answer a specific question, including a prescribed methodology and clean description of which data models to use","Ingredient 3: guided, hierarchical context navigation"
+Clay,context_delivery,always in prompt,"In its system prompt, monty is taught to work through three layers of context","Ingredient 3: guided, hierarchical context navigation"
+Clay,context_delivery,curated files the agent reads,"For any question, monty reads the catalog, identifies potentially relevant information, opens the file with that relevant information, and synthesizes it.","Ingredient 3: guided, hierarchical context navigation"
+Clay,tools,SQL execution,"It can query Snowflake directly, through permissions intentionally limited to approved data models.","Meet monty, Clay’s self-serve analytics agent"
+Clay,tools,Python,It has a Python environment for data visualization and statistical inference.,"Meet monty, Clay’s self-serve analytics agent"
+Clay,tools,chart creation,"When appropriate, it creates a graphic within its python environment and uploads the image to Slack, along with its write-up.",Ingredient 4: a system prompt that emulates a data scientist
+Clay,eval_method,none described,,
+Clay,eval_size_quality,not stated,,
+Clay,adoption,30-40% of company weekly,"monty has been live for just over two months, and 30%-40% of the company is using it on a weekly basis.",monty's reception
+Clay,adoption,84% of new users return,84% of new users return to ask another question after their first.,monty's reception
+Clay,adoption,2-3 questions per user per week,Users average roughly 2-3 questions per week.,monty's reception
+Clay,adoption,power users 10+ questions per week,monty’s biggest power users ask upwards of 10+ per week.,monty's reception
+Clay,trust_measures,shows its work,"It then provides a provenance footer, helping the end-user quickly intuit how it arrived at this answer and how much they should trust it.",Ingredient 4: a system prompt that emulates a data scientist
+Clay,trust_measures,access permissions enforced,"It can query Snowflake directly, through permissions intentionally limited to approved data models.","Meet monty, Clay’s self-serve analytics agent"
+Clay,trust_measures,confidence or warnings,"If asked to do anything outside of analytical work, monty will let the user know it’s out of scope.",Ingredient 4: a system prompt that emulates a data scientist
+Clay,main_lesson,not stated,,
+DoorDash,users,analysts and PMs,said a finance director after several weeks of testing Vera.,Intro
+DoorDash,interface,not stated,,
+DoorDash,task_scope,answer a question with SQL,"Because the models author their own SQL, a full run fires many concurrent heavy queries.",Why we built in-house
+DoorDash,task_scope,multi-step analysis,"we built an /analysis flow, which prompted the model to do problem discovery and planning before execution",Addressing complexity
+DoorDash,models_named,GPT 5.5 [production],The current production model - GPT 5.5 - scores highest overall on the benchmark.,Why we built in-house
+DoorDash,models_named,Opus 4.8 [benchmarked],"To validate this hypothesis, we tested both Claude Code and Vera with a common model, Opus 4.8.",Why we built in-house
+DoorDash,models_named,GLM 5.3 Flash [benchmarked],We hosted an internal instance of GLM 5.3 Flash via Modal endpoints as a coarse comparison,Why we built in-house
+DoorDash,models_named,Claude Fable 5 [benchmarked],"Claude Fable 5 needed fewer tool steps than the GPT models, yet spent longer per step and roughly doubled the runtime.",Why we built in-house
+DoorDash,context_sources,table and column docs,"We learn join patterns and other semantics from the remaining usage patterns, table metadata, code references, and wiki pages to build a rich data model.",Retrieval and ranking
+DoorDash,context_sources,past queries,"Core data tables are indexed offline on a regular cadence, which lets us filter out low-signal queries and strip boilerplate.",Retrieval and ranking
+DoorDash,context_sources,code repos,"We learn join patterns and other semantics from the remaining usage patterns, table metadata, code references, and wiki pages to build a rich data model.",Retrieval and ranking
+DoorDash,context_sources,past analyses or docs,"We learn join patterns and other semantics from the remaining usage patterns, table metadata, code references, and wiki pages to build a rich data model.",Retrieval and ranking
+DoorDash,context_sources,human-written domain notes,"Retrieval runs two searches side by side, over human-authored knowledge and over the modeled tables",Retrieval and ranking (caption or note)
+DoorDash,context_delivery,retrieval search,"Retrieval runs two searches side by side, over human-authored knowledge and over the modeled tables",Retrieval and ranking (caption or note)
+DoorDash,tools,SQL execution,"Because the models author their own SQL, a full run fires many concurrent heavy queries.",Why we built in-house
+DoorDash,tools,search over docs,"Retrieval runs two searches side by side, over human-authored knowledge and over the modeled tables",Retrieval and ranking (caption or note)
+DoorDash,tools,other: SQL validation,"adding business context, knowledge retrieval, data modeling, SQL validation, and execution",Why we built in-house
+DoorDash,eval_method,fixed question set with known answers,"Our evaluation dataset spans 19 vertical domains across sales, finance, product, and operational domains at DoorDash with more than 1,900 contributed evaluations.",Why we built in-house
+DoorDash,eval_method,LLM judge,"The final responses are scored with an LLM judge across three criteria: tool usage, table selection, and overall answer correctness.",Why we built in-house
+DoorDash,eval_size_quality,"1,900+ evals across 19 domains","Our evaluation dataset spans 19 vertical domains across sales, finance, product, and operational domains at DoorDash with more than 1,900 contributed evaluations.",Why we built in-house
+DoorDash,eval_size_quality,run-to-run noise about 4 points,"The run-to-run spread of the benchmark is roughly four percentage points of pass rate, independent of the model",Why we built in-house
+DoorDash,eval_size_quality,ablations on 100-question subset,"These ablations run on a 100-question subset, so differences of a few points are within our definition of noise.",Why we built in-house
+DoorDash,eval_size_quality,Vera 2.60/3.0 (73%) vs Claude Code 2.16/3.0 (48%),"Vera scored 2.60/3.0, a 73% pass rate, while CC scored 2.16/3.0, a 48% pass rate.",Why we built in-house
+DoorDash,eval_size_quality,planning step: 64-100% pass rate on 14 Tier 3 evals,between 64% and 100% pass rate — across a small sample of 14,Addressing complexity
+DoorDash,eval_size_quality,pass rate 43% to 90%,"Over the course of the project, the pass rate moved from 43% to 90% while the evaluation set size doubled twice.",Takeaways
+DoorDash,adoption,not stated,,
+DoorDash,trust_measures,human approval step,"The plan is shown before any query runs, and nothing executes until the user approves or adjusts it.",Addressing complexity (caption or note)
+DoorDash,trust_measures,access permissions enforced,access to unmodeled or unverified sources is blocked at the harness level.,Retrieval and ranking
+DoorDash,main_lesson,harness data engineering mattered most,"Improvements in the intelligence of the underlying models helped drive performance, but it was data engineering around the harness that proved to be most impactful.",Takeaways
+DoorDash,main_lesson,tuning the whole pipeline beats standard agents,"We found that building and tuning all parts of the pipeline — prompting, ranking and retrieval, and domain-specific skills — led to significant performance improvements",Intro
+DoorDash,main_lesson,generic agent struggles without a data layer,"We found that CC struggled to query modeled tables effectively to draw correct inferences, which emphasized the need for an effective data layer",Why we built in-house
+GitHub,users,all employees,"Qubot, our internal Copilot-powered analytics agent, allows any GitHub employee to ask questions about our data in plain language.",Intro
+GitHub,interface,Slack or chat app,"Qubot is accessible through Slack, VS Code, and the Copilot CLI.",User interface
+GitHub,interface,IDE or terminal,"Qubot is accessible through Slack, VS Code, and the Copilot CLI.",User interface
+GitHub,task_scope,answer a question with SQL,All the results are also stored as a markdown report in a pull request that the user can reference to fine tune the query,User interface
+GitHub,task_scope,multi-step analysis,ANALYTICS AGENT / Qubot / reasoning · planning / tool orchestration,diagram: image-01.png
+GitHub,task_scope,dashboard or report creation,All the results are also stored as a markdown report in a pull request,User interface
+GitHub,models_named,not stated,,
+GitHub,context_sources,table and column docs,"For bronze data, we have telemetry context contributed by product teams, with schema information and metadata.",Context layer
+GitHub,context_sources,metric definitions or semantic layer,"For gold data, we have business rules and metric definitions, contributed by teams owning those datasets.",Context layer
+GitHub,context_sources,past queries,"For silver data, we have examples of queries, usage guidance, mandatory filters etc, maintained by the data and analytics team.",Context layer
+GitHub,context_sources,human-written domain notes,"For silver data, we have examples of queries, usage guidance, mandatory filters etc, maintained by the data and analytics team.",Context layer
+GitHub,context_delivery,tool calls or MCP,"The context is loaded at runtime via the GitHub MCP Server, fetching it from the context layer.",Context layer
+GitHub,tools,SQL execution,"Qubot connects to both Kusto and Trino, the two query engines that power most of GitHub's analytics workloads, via a MCP server.",Query engine
+GitHub,tools,other: pull request creation,All the results are also stored as a markdown report in a pull request,User interface
+GitHub,eval_method,fixed question set with known answers,"Test cases: A curated dataset of prompts with known correct answers, ground-truth SQL, and metadata (domain, difficulty).",Evaluation framework
+GitHub,eval_size_quality,curated context: 3x faster to right answer,"structured and well curated context not only makes Qubot more accurate, but also three times faster at returning the right answer.","What changed, and what we learned"
+GitHub,adoption,"hundreds of users, thousands of queries","Qubot has been widely adopted at GitHub, with hundreds of enthusiastic users running thousands of queries.","What changed, and what we learned"
+GitHub,trust_measures,shows its work,All the results are also stored as a markdown report in a pull request that the user can reference to fine tune the query,User interface
+GitHub,main_lesson,context layer is key,We quickly discovered that the context layer is key to enriching the reasoning capabilities of Copilot and to create an expert analytics agent.,"What changed, and what we learned"
+GitHub,main_lesson,curated context is more accurate and faster,"structured and well curated context not only makes Qubot more accurate, but also three times faster at returning the right answer.","What changed, and what we learned"
+GitHub,main_lesson,hub-and-spoke ownership works,Qubot has been a rare example of successful hub-and-spoke execution.,"What changed, and what we learned"
+Grab,users,all employees,"We have grown usage more than 10x since September 2025, with strong retention, and every function at Grab now has users on it.",Analysts as builders
+Grab,interface,Slack or chat app,Both arrived as natural language questions in Slack and took entirely different routes through the system.,Loops that run end to end
+Grab,interface,web app,"The clearest evidence that our centre of gravity has moved is BriX, an internal portal we built and run ourselves.",Analysts as builders
+Grab,interface,IDE or terminal,"it runs wherever the work already happens: in Slack, invoked from inside an IDE, or on a schedule with nobody watching.",Analysts as builders
+Grab,task_scope,answer a question with SQL,"63% to 90% for data pulls, and 50% to 81% for SQL requests.",The path forward
+Grab,task_scope,multi-step analysis,The router reads the first as a root-cause question and sends it down the diagnostic path.,Loops that run end to end
+Grab,task_scope,experiment review,"The router reads it as an experiment question, selects the experiment skill, pulls the pre-computed scorecard",Loops that run end to end
+Grab,task_scope,dashboard or report creation,"it powers our automated metric and OKR commentaries, which are published through automated agents (configurable cadence).",Loops that run unattended
+Grab,task_scope,other: pipeline repair,"When a pipeline fails, an agent runs the root-cause analysis, triages, and then either fixes it",Loops that run end to end
+Grab,task_scope,other: outcome simulation,Monte (like Monte Carlo) runs simulations to put a probability on a business outcome.,Analysts as builders
+Grab,models_named,not stated,,
+Grab,context_sources,metric definitions or semantic layer,the agent loads a specialist skill and answers off certified metrics rather than from memory.,Analysts as builders
+Grab,context_sources,human-written domain notes,"It identifies the best analysis framework for ads revenue, which is codified knowledge of how the metrics in that domain relate to each other",Loops that run end to end
+Grab,context_sources,past analyses or docs,"Importantly, it also scans internal context for what teams changed on the ground",Loops that run unattended
+Grab,context_sources,saved corrections or memory,"When we categorise an agent failure in production, we patch the context document behind it.",Context that maintains itself
+Grab,context_delivery,retrieval search,"Underlying that is an index that tells the agent what to search, context that tells it how to query",Loops that run end to end
+Grab,context_delivery,tool calls or MCP,"We configure a system prompt, a set of context files, a model, the MCP connections and an interface once",Analysts as builders
+Grab,tools,SQL execution,"Funnelytics queries the raw event stream, builds the Sankey and funnel views, and writes the summary.",Analysts as builders
+Grab,tools,search over docs,"Underlying that is an index that tells the agent what to search, context that tells it how to query",Loops that run end to end
+Grab,tools,chart creation,"Funnelytics queries the raw event stream, builds the Sankey and funnel views, and writes the summary.",Analysts as builders
+Grab,tools,other: simulation,it runs ten thousand scenarios to return the likelihood of hitting a target.,Analysts as builders
+Grab,tools,other: merge requests,the agent opened a merge request that committed both a certified-context table reference and a golden-dataset test case,Context that maintains itself
+Grab,eval_method,fixed question set with known answers,"When an agent fails the same way twice, we encode the fix into context documents, golden datasets, evals and gates.",Making the climb
+Grab,eval_method,human review,"The analytics owner is tagged on every report, and edits sync back so corrections land in the system.",Loops that run unattended
+Grab,eval_size_quality,not stated,,
+Grab,adoption,BriX usage up more than 10x since Sept 2025,"We have grown usage more than 10x since September 2025, with strong retention",Analysts as builders
+Grab,adoption,analyst intervention from half to under a quarter of threads,"In March, an analyst had to step into half of them; by May, it was under a quarter.",The path forward
+Grab,adoption,no-human answers: metric questions 53% to 67%,The share answered with no human involvement rose from 53% to 67% for metric questions,The path forward
+Grab,adoption,no-human answers: data pulls 63% to 90%,63% to 90% for data pulls,The path forward
+Grab,adoption,no-human answers: SQL requests 50% to 81%,50% to 81% for SQL requests.,The path forward
+Grab,adoption,just under 3 in 4 threads from outside analytics,Just under three in four of the threads were started by someone outside the analytics team,The path forward
+Grab,adoption,85% first response inside a minute,85% of them got a first response inside a minute.,The path forward
+Grab,adoption,about two-thirds of exploration tickets arrive via channel,roughly two-thirds of the data exploration tickets on that board now arrive through the channel rather than through an analyst,The path forward
+Grab,adoption,"~230 tickets, 230 to 470 business days","if we apply a conservative assumption of 1–2 days per ticket, that is 230 to 470 business days",The path forward
+Grab,trust_measures,access permissions enforced,"Each one inherits certified data, permissions and reusable agent skills rather than being wired up from scratch",Analysts as builders
+Grab,trust_measures,confidence or warnings,It escalates when the failure sits outside its documented runbooks or the pre-defined gates fire.,Loops that run end to end
+Grab,trust_measures,human approval step,Looks Good - Run Tests / Edit Parameters,screenshot: image-02.png
+Grab,trust_measures,shows its work,Trace / 17 tools · 139s,screenshot: image-02.png
+Grab,main_lesson,context is critical,"Realising the criticality of this, we have dedicated platform investment, as well as dedicated functional bandwidth to generate context docs.",Context that maintains itself
+Kikoff,users,data team only,reducing the mechanical burden on DS reviewers and letting them focus on judgment calls.,Impact
+Kikoff,interface,not stated,,
+Kikoff,task_scope,experiment review,"an agentic system powered by Claude that runs a structured, multi-agent peer review and posts its findings directly to the experiment's Notion doc.",Intro
+Kikoff,models_named,Claude [production],"an agentic system powered by Claude that runs a structured, multi-agent peer review",Intro
+Kikoff,context_sources,metric definitions or semantic layer,The pre-filter step also attaches company-specific metric definitions — terms that differ from industry defaults.,Pre-filter: assembling the context bundle
+Kikoff,context_sources,code repos,"Git submodules — provides access to the backend, frontend, and mobile codebases","Architecture: three agents, one orchestrator"
+Kikoff,context_sources,past analyses or docs,"Notion MCP — fetches experiment writeups, posts structured review comments","Architecture: three agents, one orchestrator"
+Kikoff,context_sources,human-written domain notes,"The agent is loaded with company-specific domain context — metric definitions, which directional movements are positive vs. negative",Agent 3: the Business Analyst
+Kikoff,context_delivery,tool calls or MCP,It connects to external systems via MCP (Model Context Protocol) servers:,"Architecture: three agents, one orchestrator"
+Kikoff,context_delivery,always in prompt,A single line of explicit definition in the prompt,What We Learnt (the hard way 😛)
+Kikoff,tools,SQL execution,"Snowflake MCP — queries exposure counts, daily intake, and metric trends","Architecture: three agents, one orchestrator"
+Kikoff,tools,chart creation,Metabase — creates exposure reconciliation charts via the `/metabase` skill,"Architecture: three agents, one orchestrator"
+Kikoff,tools,other: code search,a sub-agent dispatched to grep through the codebase and determine who is actually exposed to the experiment.,Pre-filter: assembling the context bundle
+Kikoff,tools,other: sub-agents,Claude's Task tool spawns sub-agents that run in parallel.,"Architecture: three agents, one orchestrator"
+Kikoff,tools,other: Notion comments,"Notion MCP — fetches experiment writeups, posts structured review comments","Architecture: three agents, one orchestrator"
+Kikoff,eval_method,none described,,
+Kikoff,eval_size_quality,not stated,,
+Kikoff,adoption,runs on every experiment readout,The AI Experiment Reviewer now runs on every experiment readout at Kikoff.,Impact
+Kikoff,trust_measures,shows its work,It performs six checks and outputs a bullet list of verdicts with specific evidence.,Agent 3: the Business Analyst
+Kikoff,main_lesson,iterate on the prompt,Iterate relentlessly on the prompt.,What We Learnt (the hard way 😛)
+Kikoff,main_lesson,define company jargon,Claude doesn't know your jargon.,What We Learnt (the hard way 😛)
+Kikoff,main_lesson,more data is not better,More data ≠ better reviews.,What We Learnt (the hard way 😛)
+Meta,users,all employees,Analytics Agent went from a weekend prototype on a devserver to a company-wide tool used by thousands in roughly six months.,"Ship Early, Learn Fast"
+Meta,interface,web app,Chats / Recipes / Ingredients / Cookbooks / Boards / Spot checks,screenshot: image-02.png
+Meta,task_scope,answer a question with SQL,"Every data point Analytics Agent surfaces is accompanied by the SQL query that produced it, front and center.",Answer; Show Your Work
+Meta,task_scope,multi-step analysis,This happens all in a chain of queries that build on the last.,Iterative Reasoning Loop
+Meta,models_named,not stated,,
+Meta,context_sources,table and column docs,"These summaries, along with example queries and column-level documentation, are continuously refreshed and stored where the agent can retrieve them on demand.",Discover Data & Gather Context
+Meta,context_sources,past queries,By giving Analytics Agent access to the history of tables each user has queried,The 80/20 Hypothesis: Making the Problem Tractable
+Meta,context_sources,metric definitions or semantic layer,Semantic models: Pointers to the canonical data documentation for a domain,Ingredients
+Meta,context_sources,code repos,"documentation, data warehouse metadata, data pipeline source code, semantic models.",Discover Data & Gather Context
+Meta,context_sources,past analyses or docs,"Documentation & URLs: Links to metric definitions, wiki pages, and business context that ground the agent's understanding.",Ingredients
+Meta,context_sources,human-written domain notes,"Text Snippets: Free-form notes, naming conventions, known data quality issues, mandatory filters",Ingredients
+Meta,context_sources,saved corrections or memory,"Memories: Corrections and learnings the agent accumulates over time from user feedback, so mistakes aren't repeated.",Ingredients
+Meta,context_delivery,retrieval search,We index all of these and make them searchable which gives the agent the same reference materials a human analyst would consult.,Discover Data & Gather Context
+Meta,context_delivery,always in prompt,Context (Instructions): Persistent guidance appended to every conversation,Recipes
+Meta,tools,SQL execution,"the agent will query the signup table, notice the numbers look normal, check for a logging change",Iterative Reasoning Loop
+Meta,tools,Python,Coding Python,screenshot: image-02.png
+Meta,tools,chart creation,Create Plotly Chart,screenshot: image-02.png
+Meta,tools,search over docs,We index all of these and make them searchable,Discover Data & Gather Context
+Meta,tools,other: output validation,Custom Validations: Natural-language validation rules that a separate AI checks against the agent's output before presenting results.,Recipes
+Meta,eval_method,user feedback,A small alpha group of data scientists gave direct feedback.,From Hack to Company-Wide Tool
+Meta,eval_size_quality,not stated,,
+Meta,adoption,hundreds of weekly active users within weeks,"Within weeks, there were hundreds of weekly active users.",From Hack to Company-Wide Tool
+Meta,adoption,77% of data scientists and data engineers weekly,77% of Meta's Data Scientists and Data Engineers use Analytics Agent on a weekly basis,From Hack to Company-Wide Tool
+Meta,adoption,about 5x as many non-data users,along with roughly 5x as many users from non-data roles.,From Hack to Company-Wide Tool
+Meta,adoption,"4,500+ community recipes used 150,000 times","By the time of open beta, 4,500+ community-created recipes had been used 150,000 times.",Your Community Is Your Product Team
+Meta,adoption,adoption goal raised from 20% to 55% and overshot,"The team raised its adoption goal from 20% to 55% mid-half when growth exceeded expectations, and still overshot it.","Ship Early, Learn Fast"
+Meta,adoption,used by thousands,a company-wide tool used by thousands in roughly six months.,"Ship Early, Learn Fast"
+Meta,trust_measures,shows its work,"Every data point Analytics Agent surfaces is accompanied by the SQL query that produced it, front and center.",Answer; Show Your Work
+Meta,trust_measures,cites sources,Sources / Dashboard: Analytics Agent Usage / Query: WAU - All,screenshot: image-07.png
+Meta,trust_measures,confidence or warnings,Parameter Validation / High confidence: Parameters match typical dashboard usage,screenshot: image-07.png
+Meta,main_lesson,start with a falsifiable bet,The lesson: don't start with a solution looking for a problem.,Start With a Falsifiable Bet
+Meta,main_lesson,personal context is key,The lesson: an AI agent without personalized context is just a chatbot with database access.,Personal Context Is a Killer Feature
+Meta,main_lesson,domain knowledge limits quality,The lesson: the agent is only as good as the domain knowledge it has access to.,Personal Context Is a Killer Feature
+OpenAI,users,all employees,"This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team.",Intro
+OpenAI,interface,Slack or chat app,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP, and directly in OpenAI's internal ChatGPT app",How it works
+OpenAI,interface,web app,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP, and directly in OpenAI's internal ChatGPT app",How it works
+OpenAI,interface,IDE or terminal,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP, and directly in OpenAI's internal ChatGPT app",How it works
+OpenAI,task_scope,answer a question with SQL,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,task_scope,multi-step analysis,"The agent handles the analysis end-to-end, from understanding the question to exploring the data, running queries, and synthesizing findings.",How it works
+OpenAI,task_scope,dashboard or report creation,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,task_scope,other: data discovery,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,task_scope,other: table validation,Examples include workflows for weekly business reports and table validations.,Built to think and work like a teammate
+OpenAI,models_named,GPT-5.2 [production],Our agent is powered by GPT-5.2 and is designed to reason over OpenAI's data platform.,How it works
+OpenAI,models_named,GPT-5 [named],"The OpenAI tools we used to build and run it (Codex, our GPT-5 flagship model, the Evals API, and the Embeddings API)",Intro
+OpenAI,context_sources,table and column docs,The agent relies on schema metadata (column names and data types) to inform SQL writing and uses table lineage,Layer #1: Table Usage
+OpenAI,context_sources,metric definitions or semantic layer,the canonical definitions and computation logic for key metrics.,Layer #4: Institutional Knowledge
+OpenAI,context_sources,past queries,Query inference: Ingesting historical queries helps the agent understand how to write its own queries and which tables are typically joined together.,Layer #1: Table Usage
+OpenAI,context_sources,code repos,"By crawling the codebase with Codex, our agent understands how datasets are actually constructed",Lesson #3: Meaning Lives in Code
+OpenAI,context_sources,past analyses or docs,"The agent can access Slack, Google Docs, and Notion, which capture critical company context such as launches, reliability incidents, internal codenames and tools",Layer #4: Institutional Knowledge
+OpenAI,context_sources,saved corrections or memory,"When the agent is given corrections or discovers nuances about certain data questions, it's able to save these learnings for next time",Layer #5: Memory
+OpenAI,context_delivery,retrieval search,"At query time, the agent pulls only the most relevant embedded context via retrieval-augmented generation (RAG) instead of scanning raw metadata or logs.",Layer #6: Runtime Context
+OpenAI,context_delivery,tool calls or MCP,the agent can issue live queries to the data warehouse to inspect and query the table directly.,Layer #6: Runtime Context
+OpenAI,tools,SQL execution,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,tools,other: web search,can web search for external information,How it works
+OpenAI,tools,other: data platform systems,"The agent is also able to talk to other Data Platform systems (metadata service, Airflow, Spark) as needed",Layer #6: Runtime Context
+OpenAI,eval_method,fixed question set with known answers,Its Evals are built on curated sets of question-answer pairs.,Moving fast without breaking trust
+OpenAI,eval_method,LLM judge,"The grader produces a final score along with an explanation, capturing both correctness and acceptable variation.",Moving fast without breaking trust
+OpenAI,eval_size_quality,not stated,,
+OpenAI,adoption,not stated,,
+OpenAI,trust_measures,shows its work,It exposes its reasoning process by summarizing assumptions and execution steps alongside each answer.,Agent security
+OpenAI,trust_measures,cites sources,"When queries are executed, it links directly to the underlying results, allowing users to inspect raw data and verify every step of the analysis.",Agent security
+OpenAI,trust_measures,access permissions enforced,"All of the agent's access is strictly pass-through, meaning users can only query tables they already have permission to access.",Agent security
+OpenAI,trust_measures,confidence or warnings,"When access is missing, it flags this or falls back to alternative datasets the user is authorized to use.",Agent security
+OpenAI,main_lesson,less is more with tools,"To reduce ambiguity and improve reliability, we restricted and consolidated certain tool calls.",Lesson #1: Less is More
+OpenAI,main_lesson,"guide the goal, not the path",We also discovered that highly prescriptive prompting degraded results.,"Lesson #2: Guide the Goal, Not the Path"
+OpenAI,main_lesson,meaning lives in code,"Schemas and query history describe a table's shape and usage, but its true meaning lives in the code that produces it.",Lesson #3: Meaning Lives in Code
+Pinecone,users,not stated,,
+Pinecone,interface,Slack or chat app,Slack channels with active threads | 40,AskData V1: Building the Knowledge Layer
+Pinecone,task_scope,answer a question with SQL,The agent wrote more SQL per run (1.8 queries on average versus 1.3 in V1) because it had the context to write SQL immediately,What the Numbers Actually Mean
+Pinecone,task_scope,multi-step analysis,"One class of questions has no SQL-only answer: ""why is this account's usage dropping?""",What the Numbers Actually Mean
+Pinecone,models_named,not stated,,
+Pinecone,context_sources,table and column docs,LLM-summarized markdown describing the relevant warehouse table,AskData V1: Building the Knowledge Layer
+Pinecone,context_sources,metric definitions or semantic layer,"one for the semantic layer (schemas + dbt source + SQL patterns), one for customer context (Slack threads + Gong call transcripts).",The migration
+Pinecone,context_sources,past queries,"1,300 lines of Airflow code syncing Slack, Gong, and BigQuery logs into Pinecone every day.",Where V1 hit its limits
+Pinecone,context_sources,code repos,one for the semantic layer (schemas + dbt source + SQL patterns),The migration
+Pinecone,context_sources,past analyses or docs,one for customer context (Slack threads + Gong call transcripts).,The migration
+Pinecone,context_sources,human-written domain notes,The 234 hand-curated KB files became Nexus curation artifacts.,Deletions are What Matter
+Pinecone,context_sources,saved corrections or memory,a single `semantic_layer_feedback` tool that submits corrections back to Nexus for knowledge amendments.,The migration
+Pinecone,context_delivery,retrieval search,stand up two Nexus Contexts serving different retrieval goals,The migration
+Pinecone,context_delivery,tool calls or MCP,Replace the six retrieval tools with two: `search_semantic_layer` and `search_customer_context`.,The migration
+Pinecone,tools,SQL execution,The agent wrote more SQL per run (1.8 queries on average versus 1.3 in V1),What the Numbers Actually Mean
+Pinecone,tools,search over docs,Replace the six retrieval tools with two: `search_semantic_layer` and `search_customer_context`.,The migration
+Pinecone,tools,other: correction submission,a single `semantic_layer_feedback` tool that submits corrections back to Nexus for knowledge amendments.,The migration
+Pinecone,eval_method,fixed question set with known answers,"The set is 101 questions across 14 business domains, weighted toward the hard, context-heavy cases we use to benchmark AskData internally.",The migration
+Pinecone,eval_size_quality,101 questions across 14 domains,The set is 101 questions across 14 business domains,The migration
+Pinecone,eval_size_quality,V2 matched V1 at 68.3%,"Three weeks later, V2 hit full parity with V1 on our regression set: 68.3% on both.",The migration
+Pinecone,eval_size_quality,raw Claude Code baseline matched 68.3% on 20 questions at ~16x tokens,"On 20 questions stratified across our 14 domains, it matched V1/V2's accuracy (68.3%).",The migration
+Pinecone,eval_size_quality,token usage down over 92%,Token usage dropped by over 92%.,Intro
+Pinecone,eval_size_quality,query turns down 78%,Query turns dropped by 78%.,Intro
+Pinecone,adoption,"3,690 questions answered in three months","Questions answered | 3,690",AskData V1: Building the Knowledge Layer
+Pinecone,adoption,40 Slack channels with active threads,Slack channels with active threads | 40,AskData V1: Building the Knowledge Layer
+Pinecone,adoption,~49% follow-up runs,Follow-up runs (chained conversations) | ~49%,AskData V1: Building the Knowledge Layer
+Pinecone,adoption,191 questions per day,Questions per day (May 11) | 191,AskData V1: Building the Knowledge Layer
+Pinecone,trust_measures,not stated,,
+Pinecone,main_lesson,"compile once, read many","Compile once, read many.",Deletions are What Matter
+Pinecone,main_lesson,"fewer tools, better agents","Fewer tools, better agents.",Deletions are What Matter
+Pinecone,main_lesson,iterative curation with agent in loop,"Curation has to be iterative, with the agent in the loop.",Deletions are What Matter
+Ramp,users,analysts and PMs,Product Managers / Designers / Account Executives / Marketing Team / Growth Team,diagram: ramp-research-agent-architecture.png
+Ramp,interface,Slack or chat app,"Slack is our internal hub, so it was the obvious choice of interface for Ramp Research.",Slack as an Interface
+Ramp,task_scope,answer a question with SQL,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,task_scope,multi-step analysis,adding it to alert channels to diagnose failed transactions and project channels to scope out new features.,Beyond `#ramp-research-beta`
+Ramp,task_scope,other: case study generation,"Increasingly, we're seeing teams start to use Ramp Research to automate their existing workflows, like generating customer case studies and detecting common fraud patterns.",Looking Forward
+Ramp,task_scope,other: fraud pattern detection,"Increasingly, we're seeing teams start to use Ramp Research to automate their existing workflows, like generating customer case studies and detecting common fraud patterns.",Looking Forward
+Ramp,models_named,not stated,,
+Ramp,context_sources,table and column docs,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,context_sources,human-written domain notes,we relied on domain owners to write up technical documentation on their respective areas,Defining the Search Space
+Ramp,context_delivery,retrieval search,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,context_delivery,curated files the agent reads,These documents were then organized into a file system that Ramp Research can access as needed.,Defining the Search Space
+Ramp,context_delivery,tool calls or MCP,"we gave the agent tools to inspect column values, branch, and backtrack",Defining the Search Space
+Ramp,tools,SQL execution,"we gave the agent tools to inspect column values, branch, and backtrack",Defining the Search Space
+Ramp,eval_method,fixed question set with known answers,"With domain experts, we listed the high-priority concepts in every domain and wrote end-to-end tests.",Evaluations
+Ramp,eval_size_quality,not stated,,
+Ramp,adoption,"1,800+ questions answered since launch","Since launching in early August, Ramp Research has answered over 1,800 data questions",Building Ramp Research
+Ramp,adoption,"1,200+ conversations","across more than 1,200 conversations with 300 different users.",Building Ramp Research
+Ramp,adoption,300 users,with 300 different users.,Building Ramp Research
+Ramp,adoption,500+ channel members,The `#ramp-research-beta` channel now has 500+ members,Slack as an Interface
+Ramp,adoption,10-20x more questions asked,The result is a 10-20x increase in the number of questions people ask.,Scaling our Data-Driven Culture
+Ramp,adoption,"1,476 questions in 4 weeks vs 66 in #help-data","In the last 4 weeks, Ramp Research answered 1,476 questions in #ramp-research-beta, compared to 66 answered in #help-data.",Scaling our Data-Driven Culture (caption or note)
+Ramp,adoption,thousands of questions per month,is now answering thousands of questions per month,Intro
+Ramp,trust_measures,shows its work,We've added in-thread CSV previews so they can validate results without leaving Slack.,Data Previews
+Ramp,trust_measures,access permissions enforced,Ramp Research does not have access to any personally identifiable information (PII).,Building Ramp Research (caption or note)
+Ramp,trust_measures,confidence or warnings,I need to explain that I cannot provide the cardholder names due to Ramp's data masking policy,screenshot: ramp-research-response-screenshot.png
+Ramp,main_lesson,not stated,,
+Snap,users,all employees,"from your team, to all of DS, to anyone at Snap with a browser",The trust ladder
+Snap,interface,IDE or terminal,Some live in an IDE like Cursor. Some prefer a terminal agent like Claude Code or Codex CLI.,"Many hands, one brain"
+Snap,interface,web app,powering a hosted app used by people who have never opened an editor.,The trust ladder
+Snap,task_scope,answer a question with SQL,Analytical claims are expected to point back to the query or source that produced them.,An agent that joined Snap last week
+Snap,task_scope,multi-step analysis,"It writes the code, runs it, reads the output, iterates, and writes up findings with real results.",An agent that joined Snap last week
+Snap,task_scope,dashboard or report creation,"It writes the code, runs it, reads the output, iterates, and writes up findings with real results.",An agent that joined Snap last week
+Snap,models_named,not stated,,
+Snap,context_sources,table and column docs,"Tables registered there carry metadata such as schema, ownership, documentation, lineage, and health.",What the agent knows
+Snap,context_sources,code repos,GitHub for code and pull requests.,What the agent knows
+Snap,context_sources,past analyses or docs,"Glean, internal search, for Slack threads and Google Docs",What the agent knows
+Snap,context_sources,human-written domain notes,"It carries plain markdown docs: how our platforms work, what a good report looks like, and, most valuable of all, documented tables.",What the agent knows
+Snap,context_sources,saved corrections or memory,"And every session leaves a residue: a newly documented table, a fixed skill, a line in the log of unverified data someone touched.",Local metabolism
+Snap,context_delivery,curated files the agent reads,"the checkout supplies the instructions, skills, domain knowledge, and guardrails needed to support data-science work.",Intro
+Snap,context_delivery,tool calls or MCP,"Most knowledge is too alive to copy into a repo, so the agent reaches it over MCP",What the agent knows
+Snap,tools,SQL execution,the cost check dry-runs the query before execution,Verified or it doesn't ship
+Snap,tools,Python,"It writes the code, runs it, reads the output, iterates, and writes up findings with real results.",An agent that joined Snap last week
+Snap,tools,search over docs,"Glean, internal search, for Slack threads and Google Docs",What the agent knows
+Snap,tools,other: query cost check,the cost check dry-runs the query before execution,Verified or it doesn't ship
+Snap,eval_method,fixed question set with known answers,"review, evaluation against a golden dataset, a privacy and safety checklist.",The trust ladder
+Snap,eval_method,human review,Human review,diagram: image-02.webp
+Snap,eval_size_quality,not stated,,
+Snap,adoption,roughly fifty forks in February,By the end of the month there were roughly fifty forks of DS Agent across DS teams.,Fifty forks in February
+Snap,adoption,roughly a hundred contributors,that repo has roughly a hundred contributors across every single domain area and roughly 250 skills.,Intro
+Snap,trust_measures,shows its work,Analytical claims are expected to point back to the query or source that produced them.,An agent that joined Snap last week
+Snap,trust_measures,cites sources,"asking instead of assuming, citing sources, showing work for verification",An agent that joined Snap last week
+Snap,trust_measures,access permissions enforced,An unverified table that carries nothing sensitive can now be queried provisionally,Verified or it doesn't ship
+Snap,trust_measures,human approval step,"after the agent names the table, shows what it knows from metadata alone, and gets explicit human sign-off.",Verified or it doesn't ship
+Snap,trust_measures,confidence or warnings,"The access is logged, every number it touches is marked as provisional, and none of it may land in anything shared.",Verified or it doesn't ship
+Snap,main_lesson,skill descriptions are the bottleneck,"Which points at the counterintuitive lesson of running a skill library: the bottleneck isn't writing procedures, it's writing descriptions.",Anatomy of the repo
+Snap,main_lesson,guardrails need code enforcement on every layer,The general lesson: an agent's guardrails are only as strong as the least-guarded layer it can reach the same effect through.,Verified or it doesn't ship
+Spotify,users,not stated,,
+Spotify,interface,Slack or chat app,"a Slack bot for quick questions while chatting on a thread, an MCP server for IDEs and AI tools, and a dedicated web UI",Our data agent
+Spotify,interface,IDE or terminal,"a Slack bot for quick questions while chatting on a thread, an MCP server for IDEs and AI tools, and a dedicated web UI",Our data agent
+Spotify,interface,web app,"a Slack bot for quick questions while chatting on a thread, an MCP server for IDEs and AI tools, and a dedicated web UI",Our data agent
+Spotify,task_scope,answer a question with SQL,"the agent picks the appropriate context, writes the SQL query, runs it against our warehouse, and returns the answer",Our data agent
+Spotify,models_named,not stated,,
+Spotify,context_sources,table and column docs,"Datasets: the data warehouse tables that are relevant, with full schema and profiling.",The cluster model
+Spotify,context_sources,past queries,Pairs: vetted question-and-SQL examples.,The cluster model
+Spotify,context_sources,human-written domain notes,"Docs: additional business context. This could be terminology, gotchas, definitions that vary by team, which columns to use and which to avoid.",The cluster model
+Spotify,context_delivery,not stated,,
+Spotify,tools,SQL execution,"writes the SQL query, runs it against our warehouse",Our data agent
+Spotify,eval_method,user feedback,"the questions, answers, generated SQL and user feedback are shown to cluster owners.",Closing the loop
+Spotify,eval_size_quality,not stated,,
+Spotify,adoption,"over 2,100 users since Aug 2025","It has been actively utilized since August 2025 by over 2,100 Spotifiers",Our data agent
+Spotify,adoption,"13,000+ conversations","within 13,000+ conversations",Our data agent
+Spotify,adoption,"60,000+ messages","and 60,000+ messages using 177 clusters",Our data agent
+Spotify,adoption,over a quarter of users never coded SQL,More than a quarter of these users haven't even coded SQL before.,Our data agent
+Spotify,trust_measures,shows its work,returns the answer alongside the query and its sources.,Our data agent
+Spotify,trust_measures,cites sources,returns the answer alongside the query and its sources.,Our data agent
+Spotify,trust_measures,confidence or warnings,"When no knowledge base covers the topic, the data agent informs you about it.",Our data agent
+Spotify,main_lesson,not stated,,
+Stripe,users,all employees,There's no infrastructure to set up – it's available to every employee on Day 0.,Surface-agnostic APIs
+Stripe,interface,web app,Most Stripes interact with Kai through the internally hosted web application.,Surface-agnostic APIs
+Stripe,interface,Slack or chat app,Kai ships with an opinionated web application and a Slack integration,Surface-agnostic APIs
+Stripe,interface,BI tool,an employee working in our business intelligence platform can ask Kai a question from within their existing application,Surface-agnostic APIs
+Stripe,task_scope,dashboard or report creation,"In finance and operations, Kai is helping Stripes analyze messy data, generate recurring digests, and turn fragmented context into usable artifacts.",Impact
+Stripe,task_scope,other: data analysis,"And across Stripe, more than 5,000 sessions everyday center on data analysis.",Impact
+Stripe,models_named,not stated,,
+Stripe,context_sources,human-written domain notes,Skills are organized into areas across Stripe that are managed by domain experts,AgentStudio (caption or note)
+Stripe,context_delivery,retrieval search,we solved this without that pre-existing structure by utilizing a hybrid RAG/LLM approach,The execution environment
+Stripe,context_delivery,tool calls or MCP,"Kai is connected to 1,000+ skills and tools spanning various internal systems",The execution environment
+Stripe,tools,Python,a secure code execution sandbox is used for analytics and data processing.,The execution environment
+Stripe,tools,other: BI dashboards,from business intelligence dashboards that track key metrics,The execution environment
+Stripe,eval_method,none described,,
+Stripe,eval_size_quality,not stated,,
+Stripe,adoption,83% weekly active users,"Today, 83% are weekly active users, including nearly all of GTM",Intro
+Stripe,adoption,most of Stripe within two weeks of launch,"Within two weeks of our April launch, most of Stripe was using Stripe's Knowledge AI Platform",Intro
+Stripe,adoption,"5,000+ data analysis sessions per day","more than 5,000 sessions everyday center on data analysis.",Impact
+Stripe,adoption,"25,000 hours per year shifted","In aggregate, Kai has helped shift 25,000 hours per year from administrative work, to revenue generating work.",Impact
+Stripe,adoption,GTM new hires use it 2.7x more,New hires on GTM are Kai-native: they use it 2.7x more,Impact
+Stripe,adoption,"AEs: 2x activity, +17% opps, +26% revenue opps, +39% deals","they produce 2x the sales activity, create 17% more opportunities, generate 26% more revenue opportunities, and close 39% more deals",Impact
+Stripe,trust_measures,access permissions enforced,"A user may have legitimate access to both contexts independently, but they can never appear in the same session.",Building guardrails from scratch
+Stripe,main_lesson,not stated,,
+Vercel,users,all employees,letting anyone on the team get answers without writing code or waiting on the data team.,What is d0
+Vercel,interface,Slack or chat app,d0 enables anyone to make data-driven decisions by asking it questions in Slack,What is d0; What is d0 (caption or note)
+Vercel,task_scope,answer a question with SQL,d0 translates natural language questions into SQL queries against our analytics infrastructure,What is d0
+Vercel,models_named,Claude Opus 4.5 [production],Model: Claude Opus 4.5 via the AI SDK,v2: The file system is the agent
+Vercel,context_sources,metric definitions or semantic layer,"Data layer: Cube semantic layer as a directory of YAML, Markdown, and JSON files",v2: The file system is the agent
+Vercel,context_delivery,curated files the agent reads,The file system agent now browses our semantic layer the way a human analyst would.,v2: The file system is the agent
+Vercel,tools,SQL execution,"import { ExecuteSQL } from ""@/lib/tools"";",v2: The file system is the agent
+Vercel,tools,other: bash,stripped the agent down to a single tool: execute arbitrary bash commands.,Intro
+Vercel,eval_method,fixed question set with known answers,We benchmarked the old architecture against the new file system approach across 5 representative queries.,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,eval_size_quality,5 representative queries,across 5 representative queries.,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,eval_size_quality,success rate 80% to 100%,Success rate | 4/5 (80%) | 5/5 (100%) | +20%,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,eval_size_quality,3.5x faster,Avg execution time | 274.8s | 77.4s | 3.5x faster,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,eval_size_quality,37% fewer tokens,Avg token usage | ~102k tokens | ~61k tokens | 37% fewer tokens,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,eval_size_quality,42% fewer steps,Avg steps | ~12 steps | ~7 steps | 42% fewer steps,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,adoption,not stated,,
+Vercel,trust_measures,shows its work,The agent catches edge cases we never anticipated and explains its reasoning in ways we can follow.,"3.5x faster, 37% fewer tokens, 100% success rate"
+Vercel,main_lesson,don't fight gravity,Don't fight gravity. File systems are an incredibly powerful abstraction.,Lessons learned
+Vercel,main_lesson,stop constraining the model's reasoning,The model makes better choices when we stop making choices for it.,Lessons learned
+Vercel,main_lesson,needs a well-documented semantic layer,This only worked because our semantic layer was already good documentation.,Lessons learned
