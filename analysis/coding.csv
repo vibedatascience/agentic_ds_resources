@@ -1,0 +1,86 @@
+company,field,value,quote,location
+OpenAI,users,all employees,"This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team.",Intro
+OpenAI,interface,Slack or chat app,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP",How it works
+OpenAI,interface,web app,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP",How it works
+OpenAI,interface,IDE or terminal,"as a Slack agent, through a web interface, inside IDEs, in the Codex CLI via MCP",How it works
+OpenAI,task_scope,answer a question with SQL,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,task_scope,multi-step analysis,"The agent handles the analysis end-to-end, from understanding the question to exploring the data, running queries, and synthesizing findings.",How it works
+OpenAI,task_scope,dashboard or report creation,Examples include workflows for weekly business reports and table validations.,Built to think and work like a teammate
+OpenAI,task_scope,other: data discovery,"The result is an agent that works well both when you know exactly what you want (e.g., ""Tell me about this table"")",Built to think and work like a teammate
+OpenAI,models_named,GPT-5.2 [production],Our agent is powered by GPT-5.2 and is designed to reason over OpenAI's data platform.,How it works
+OpenAI,models_named,GPT-5 [named],relying on GPT-5's reasoning to choose the appropriate execution path,"Lesson #2: Guide the Goal, Not the Path"
+OpenAI,context_sources,table and column docs,The agent relies on schema metadata (column names and data types) to inform SQL writing,Layer #1: Table Usage
+OpenAI,context_sources,metric definitions or semantic layer,"capture critical company context such as launches, reliability incidents, internal codenames and tools, and the canonical definitions and computation logic for key metrics",Layer #4: Institutional Knowledge
+OpenAI,context_sources,past queries,Ingesting historical queries helps the agent understand how to write its own queries and which tables are typically joined together.,Layer #1: Table Usage
+OpenAI,context_sources,code repos,"By deriving a code-level definition of a table, the agent builds a deeper understanding of what the data actually contains.",Layer #3: Codex Enrichment
+OpenAI,context_sources,past analyses or docs,"The agent can access Slack, Google Docs, and Notion",Layer #4: Institutional Knowledge
+OpenAI,context_sources,human-written domain notes,Memories can also be manually created and edited by users.,Layer #5: Memory
+OpenAI,context_delivery,retrieval search,"At query time, the agent pulls only the most relevant embedded context via retrieval-augmented generation (RAG) instead of scanning raw metadata or logs.",Layer #6: Runtime Context
+OpenAI,context_delivery,tool calls or MCP,the agent can issue live queries to the data warehouse to inspect and query the table directly,Layer #6: Runtime Context
+OpenAI,tools,SQL execution,"The agent covers the full analytics workflow: discovering data, running SQL, and publishing notebooks and reports.",How it works
+OpenAI,tools,search over docs,"A retrieval service handles access control and caching at runtime, enabling the agent to efficiently and safely pull in this information.",Layer #4: Institutional Knowledge
+OpenAI,tools,other: web search,can web search for external information,How it works
+OpenAI,tools,other: data platform systems,"The agent is also able to talk to other Data Platform systems (metadata service, Airflow, Spark) as needed",Layer #6: Runtime Context
+OpenAI,eval_method,fixed question set with known answers,Its Evals are built on curated sets of question-answer pairs.,Moving fast without breaking trust
+OpenAI,eval_size_quality,not stated,,
+OpenAI,adoption,not stated,,
+OpenAI,trust_measures,access permissions enforced,"All of the agent's access is strictly pass-through, meaning users can only query tables they already have permission to access.",Agent security
+OpenAI,trust_measures,cites sources,"When queries are executed, it links directly to the underlying results, allowing users to inspect raw data and verify every step of the analysis.",Agent security
+OpenAI,trust_measures,confidence or warnings,"When access is missing, it flags this or falls back to alternative datasets the user is authorized to use.",Agent security
+OpenAI,main_lesson,Less is More,"To reduce ambiguity and improve reliability, we restricted and consolidated certain tool calls.",Lesson #1: Less is More
+OpenAI,main_lesson,"Guide the Goal, Not the Path",We also discovered that highly prescriptive prompting degraded results.,"Lesson #2: Guide the Goal, Not the Path"
+OpenAI,main_lesson,Meaning Lives in Code,"Schemas and query history describe a table's shape and usage, but its true meaning lives in the code that produces it.",Lesson #3: Meaning Lives in Code
+Ramp,users,analysts and PMs,Product Managers / Designers / Account Executives / Marketing Team / Growth Team,diagram: ramp-research-agent-architecture.png
+Ramp,interface,Slack or chat app,able to answer data* questions directly in Slack,Building Ramp Research
+Ramp,task_scope,answer a question with SQL,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,task_scope,multi-step analysis,adding it to alert channels to diagnose failed transactions and project channels to scope out new features,Beyond `#ramp-research-beta`
+Ramp,task_scope,other: workflow automation,"Increasingly, we're seeing teams start to use Ramp Research to automate their existing workflows, like generating customer case studies and detecting common fraud patterns.",Looking Forward
+Ramp,models_named,not stated,,
+Ramp,context_sources,table and column docs,"At Ramp, that context lives in dbt, Looker, and Snowflake. We aggregated and indexed this metadata",Defining the Search Space
+Ramp,context_sources,human-written domain notes,we relied on domain owners to write up technical documentation on their respective areas,Defining the Search Space
+Ramp,context_delivery,retrieval search,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,context_delivery,curated files the agent reads,These documents were then organized into a file system that Ramp Research can access as needed.,Defining the Search Space
+Ramp,context_delivery,tool calls or MCP,"we gave the agent tools to inspect column values, branch, and backtrack",Defining the Search Space
+Ramp,tools,SQL execution,SQL Query / Data Preview,screenshot: ramp-research-response-screenshot.png
+Ramp,tools,search over docs,"We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",Defining the Search Space
+Ramp,eval_method,fixed question set with known answers,"It asserts not only on the final answer but also the intermediate steps, including expected tool calls, table references, and query shape.",Evaluations
+Ramp,eval_size_quality,not stated,,
+Ramp,adoption,"1,800+ questions, 1,200+ conversations, 300 users since early August 2025","Since launching in early August, Ramp Research has answered over 1,800 data questions across more than 1,200 conversations with 300 different users.",Building Ramp Research
+Ramp,adoption,500+ members in #ramp-research-beta,The `#ramp-research-beta` channel now has 500+ members,Slack as an Interface
+Ramp,adoption,10-20x increase in questions asked,The result is a 10-20x increase in the number of questions people ask.,Scaling our Data-Driven Culture
+Ramp,adoption,"1,476 questions in 4 weeks vs 66 in #help-data","In the last 4 weeks, Ramp Research answered 1,476 questions in #ramp-research-beta, compared to 66 answered in #help-data.",Scaling our Data-Driven Culture (caption or note)
+Ramp,trust_measures,access permissions enforced,Ramp Research does not have access to any personally identifiable information (PII).,Building Ramp Research (caption or note)
+Ramp,trust_measures,shows its SQL or code,SQL Query / Intermediate Steps,screenshot: ramp-research-response-screenshot.png
+Ramp,main_lesson,not stated,,
+DoorDash,users,analysts and PMs,said a finance director after several weeks of testing Vera.,Intro
+DoorDash,interface,not stated,,
+DoorDash,task_scope,answer a question with SQL,"Because the models author their own SQL, a full run fires many concurrent heavy queries.",Why we built in-house
+DoorDash,task_scope,multi-step analysis,"For these questions, we built an /analysis flow, which prompted the model to do problem discovery and planning before execution",Addressing complexity
+DoorDash,task_scope,experiment review,"Tier 3: Questions requiring deeper interpretation and accountability, including causal analysis, experiment readouts, committed forecasts, and high-stakes decision support",Addressing complexity
+DoorDash,models_named,GPT 5.5 [production],The current production model - GPT 5.5 - scores highest overall on the benchmark.,Why we built in-house
+DoorDash,models_named,Opus 4.8 [benchmarked],"we tested both Claude Code and Vera with a common model, Opus 4.8.",Why we built in-house
+DoorDash,models_named,Claude Fable 5 [benchmarked],Claude Fable 5 needed fewer tool steps than the GPT models,Why we built in-house
+DoorDash,models_named,GLM 5.3 Flash [benchmarked],We hosted an internal instance of GLM 5.3 Flash via Modal endpoints as a coarse comparison,Why we built in-house
+DoorDash,context_sources,table and column docs,"We learn join patterns and other semantics from the remaining usage patterns, table metadata, code references, and wiki pages to build a rich data model.",Retrieval and ranking
+DoorDash,context_sources,metric definitions or semantic layer,But a strong semantic data layer is key to ensuring these agents pull truthful answers that the business can trust.,Why we built in-house
+DoorDash,context_sources,past queries,"Core data tables are indexed offline on a regular cadence, which lets us filter out low-signal queries and strip boilerplate.",Retrieval and ranking
+DoorDash,context_sources,code repos,"10 institutional knowledge sources, from code repositories to wikis",Retrieval and ranking
+DoorDash,context_sources,past analyses or docs,"We learn join patterns and other semantics from the remaining usage patterns, table metadata, code references, and wiki pages to build a rich data model.",Retrieval and ranking
+DoorDash,context_sources,human-written domain notes,"Retrieval runs two searches side by side, over human-authored knowledge and over the modeled tables",Retrieval and ranking (caption or note)
+DoorDash,context_delivery,retrieval search,"For simplicity, a single embedding model is used across all knowledge stores.",Retrieval and ranking
+DoorDash,tools,SQL execution,"Because the models author their own SQL, a full run fires many concurrent heavy queries.",Why we built in-house
+DoorDash,tools,search over docs,"Retrieval runs two searches side by side, over human-authored knowledge and over the modeled tables",Retrieval and ranking (caption or note)
+DoorDash,tools,other: SQL validation,"adding business context, knowledge retrieval, data modeling, SQL validation, and execution",Why we built in-house
+DoorDash,eval_method,fixed question set with known answers,"Our evaluation dataset spans 19 vertical domains across sales, finance, product, and operational domains at DoorDash with more than 1,900 contributed evaluations.",Why we built in-house
+DoorDash,eval_method,LLM judge,"The final responses are scored with an LLM judge across three criteria: tool usage, table selection, and overall answer correctness.",Why we built in-house
+DoorDash,eval_size_quality,"1,900+ evals across 19 domains","Our evaluation dataset spans 19 vertical domains across sales, finance, product, and operational domains at DoorDash with more than 1,900 contributed evaluations.",Why we built in-house
+DoorDash,eval_size_quality,pass rate rose from 43% to 90%,"Over the course of the project, the pass rate moved from 43% to 90% while the evaluation set size doubled twice.",Takeaways
+DoorDash,eval_size_quality,100 samples: Vera 2.60/3.0 (73% pass) vs Claude Code 2.16/3.0 (48%),"Vera scored 2.60/3.0, a 73% pass rate, while CC scored 2.16/3.0, a 48% pass rate.",Why we built in-house
+DoorDash,eval_size_quality,Tier 3 with planning step: 64% to 100% pass rate on 14 evals,between 64% and 100% pass rate — across a small sample of 14,Addressing complexity
+DoorDash,eval_size_quality,run-to-run noise about 4 points of pass rate,The run-to-run spread of the benchmark is roughly four percentage points of pass rate,Why we built in-house
+DoorDash,adoption,not stated,,
+DoorDash,trust_measures,human approval step,"The plan is shown before any query runs, and nothing executes until the user approves or adjusts it.",Addressing complexity (caption or note)
+DoorDash,trust_measures,access permissions enforced,access to unmodeled or unverified sources is blocked at the harness level,Retrieval and ranking
+DoorDash,main_lesson,harness matters more than the model,"Improvements in the intelligence of the underlying models helped drive performance, but it was data engineering around the harness that proved to be most impactful.",Takeaways
+DoorDash,main_lesson,model gains have plateaued,This is a strong indicator that raw model intelligence is no longer the biggest contributing factor to Vera’s improvements,Why we built in-house
+DoorDash,main_lesson,planning helps hard questions,We’ve found that a structured planning step improves the performance of these Tier 3 evals,Addressing complexity
