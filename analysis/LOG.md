@@ -134,6 +134,33 @@ Pass 2 (`coding_pass2.csv`, 430 rows, commit `1039dd5`) was coded in a fresh sch
 | 4 | D11 | A lessons section is one whose heading or first sentence names lessons, learnings or takeaways. The framing word may be in the quoted sentence or the one right before it. |
 | 5 | D5, D7, D8 | A provenance footer is "cites sources" only. "Human review" needs people to judge agent outputs; "shown to owners" is not enough. Evaluations of retrieved context are not answer evaluations. Both passes must check screenshots for interface, tools and trust (G3). |
 
+## 2026-10-09: Fixes applied, disagreements resolved (step 4 done)
+
+Rahul: "Just finish this" (08:01). Read as: accept fixes F1-F5, delegate the disagreement calls, finish steps 5-6.
+
+- `codebook.md` revised with F1-F5, marked in place. One wording change from the proposal: F4 said a lessons section is one whose heading or *first sentence* names lessons. Applied literally, that would have excluded the Block and Pinecone lessons sections, which both passes coded, because the framing words come in their second sentence. F4 was written as "heading, or text before its first sub-heading or list".
+- `coding.csv` moved to `coding_pass1.csv`. New `coding.csv` (407 rows) = pass 1 plus every change listed in `resolve.py`. All quotes pass `check_quotes.py`.
+- Final calls on the 38 disagreements: pass 2 right 19, pass 1 right 11, mixed or same fact 8. Each is in `disagreements.md` next to the provisional call.
+- Sweep of F1-F5 over rows where both passes agreed changed 12 rows: dropped Block on-call triage, DoorDash past queries, DoorDash search over docs, GitHub "3x faster" (speed), Stripe "83% weekly active" (platform-wide, outside scope); added Meta x2 and Clay x1 adoption numbers and one earlier Stripe lesson; requoted Block multi-step and Meta past queries; cut tokens and latency from one Anthropic eval value.
+- Not done: a third blind pass under the revised codebook. Agreement in the paper is the pre-fix measure, stated as a limitation.
+- `compare_passes.py` limit found: a long paragraph is one source line, so different numbers cut from one paragraph count as agreement (Grab adoption).
+
+## 2026-10-09: Step 5, tabulate
+
+- `tabulate.py` writes `comparison.md` (15 x 12, 407 cell values, each linked to its `coding.csv` line; all links checked) and `counts.md` (counts per value, not-stated tally, cross counts, 5 findings).
+
+## 2026-10-09: Step 6, paper draft
+
+- `paper_draft.md`, about 3,500 words in the body plus 4 tables, following the brief's outline. Every quote checked verbatim against the corpus; Table 4 and the compact matrix checked against `coding.csv` by script.
+- Coding by an LLM agent in two sessions is disclosed in Method and Limitations.
+
+### Venue dates checked
+
+| Venue | What was found | Source |
+|---|---|---|
+| DATA 2027 | 16th International Conference on Data Science, Technology and Applications (INSTICC), Rome, July 19-21, 2027. Regular paper 1st stage Feb 16, 2027; position/regular paper 2nd stage Mar 25, 2027. | beri.net listing. The venue site (data.scitevents.org) could not be fetched without Rahul's approval; confirm there. |
+| VLDB 2027 | Athens, Aug 23-27, 2027. No workshops or workshop deadlines listed yet. VLDB 2026 had "1st International Workshop on Agentic Data Systems (ADS) and the 3rd International Workshop on Data-Centric AI (DATAI)" and DASHSys (data-centric agents with human oversight). The "~May 2027" workshop deadline is unconfirmed. | vldb.org/2027/important-dates.html; vldb.org/2026/Workshops/vldb.html |
+
 ## Not included
 
 Posts referred to inside the corpus. Not fetched and not added.

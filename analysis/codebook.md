@@ -1,6 +1,6 @@
 # Codebook
 
-Status: **frozen 2026-10-08** after Rahul's OK on the pilot. Every change from the brief's schema is listed in `LOG.md`.
+Status: **frozen 2026-10-08** after Rahul's OK on the pilot; **revised 2026-10-09** with fixes F1-F5 after the agreement check (Rahul: "Just finish this"). Every change from the brief's schema is listed in `LOG.md`. Rules added on 2026-10-09 are marked [F1]-[F5].
 
 Pilot posts: OpenAI, Ramp, DoorDash.
 
@@ -26,6 +26,8 @@ Pilot posts: OpenAI, Ramp, DoorDash.
 | G6 | **Location** = the nearest heading above the quote, as written in the post. Text before the first heading is `Intro`. Italic caption and footnote lines add `(caption or note)`. For Anthropic, prefix the post title. `check_quotes.py` fills and checks this. |
 | G7 | **One row per value.** The same quote may support several values in different rows. |
 | G8 | **"not stated"** gets one row with empty quote and location. Use it whenever no sentence states a value. Never infer. |
+| G9 | **What the agent does or reads now** [F3]. Lists of needs or goals, difficulty tiers, use cases of the wider platform, and raw material that is distilled into other docs before the agent sees it do not count as tasks, tools or context sources. |
+| G10 | **Check every screenshot** [F5] for Interface, Tools and Trust labels (G3) in every company. |
 
 ## Fields
 
@@ -40,7 +42,7 @@ Who uses the agent.
 | all employees | says anyone, any employee, all functions, or gives company-wide reach |
 | executives | names executives, leadership, the CFO or board-level users. Add to one of the values above. |
 
-Rule: code **one** of the first three (the widest reach the post states), plus `executives` if named. A director title alone is not `executives`.
+Rule: code **one** of the first three (the widest reach the post states), plus `executives` if named. A director title alone is not `executives`. `analysts and PMs` needs a named role or function; a share of users with some trait (e.g. "never wrote SQL") is not one [F3].
 
 - Counts: "This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team." (OpenAI, all employees)
 - Does not count: "More than 10,000 people at DoorDash rely on a data ecosystem" (the data platform, not the agent; G5)
@@ -69,7 +71,7 @@ What the agent is used for. Pick all that apply.
 | Value | Code when the post... |
 |---|---|
 | answer a question with SQL | says the agent writes or runs SQL to answer a data question |
-| multi-step analysis | describes investigations that span several queries or steps: root cause, diagnosis, end-to-end analysis, planning before execution |
+| multi-step analysis | describes an investigation the agent carries out over several queries or steps: root cause, diagnosis, end-to-end analysis, planning before execution. A named activity alone ("debug funnels") or an architecture label ("reasoning, planning") is not enough [F3]. |
 | experiment review | says the agent reads, reviews or summarizes A/B test results |
 | dashboard or report creation | says the agent produces dashboards, reports, notebooks or recurring digests |
 | other: \<label\> | anything else, with a 1-3 word label (e.g. `other: data discovery`) |
@@ -131,7 +133,7 @@ What the agent can run. Pick all that apply.
 |---|---|
 | SQL execution | runs queries against a database |
 | Python | runs Python or other code for analysis |
-| search over docs | searches indexed docs, metadata or knowledge |
+| search over docs | searches indexed docs, metadata or knowledge itself, as a tool or an action the post attributes to the agent. Retrieval that a pipeline runs for the agent before the prompt is `context_delivery: retrieval search` only [F1]. |
 | chart creation | makes charts or visualizations |
 | other: \<label\> | any other tool, with a short label (web search, SQL validation, bash) |
 
@@ -146,25 +148,25 @@ How the team measures quality. Pick all that apply, or `none described`.
 |---|---|
 | fixed question set with known answers | a set of questions with expected SQL, answers or rubrics is run against the agent |
 | LLM judge | an LLM or model grades the agent's answers |
-| human review | people grade the agent's outputs |
+| human review | people judge the agent's outputs for quality. Outputs being "shown to" owners is not enough [F5]. |
 | user feedback | user ratings, reactions or corrections are collected as a quality signal |
 | none described | the post describes no evaluation |
 
-Rules: `LLM judge` needs the post to say an LLM or model grades, or that an automated grader writes an explanation with its score (OpenAI's Evals grader). A grader that only compares outputs is not a judge. People writing or vetting eval cases is not `human review`.
+Rules: an evaluation of retrieved context, not of the agent's answers, is not coded here [F5]. `LLM judge` needs the post to say an LLM or model grades, or that an automated grader writes an explanation with its score (OpenAI's Evals grader). A grader that only compares outputs is not a judge. People writing or vetting eval cases is not `human review`.
 
 - Counts (LLM judge): "The final responses are scored with an LLM judge across three criteria" (DoorDash)
 - Does not count (human review): "a human-in-the-loop system in Slack that pinged domain owners for every in-domain question. This solution didn't scale" (abandoned; G4)
 
 ### 9. eval_size_quality
 
-Numbers about the evaluation, as written. One row per distinct result. Value = short restatement; quote carries the exact numbers. `not stated` if no numbers.
+Numbers about the evaluation, as written: set sizes and correctness numbers (accuracy, pass rate, score). Speed, tokens, steps and cost are not coded [F2]. One row per distinct result. Value = short restatement; quote carries the exact numbers. `not stated` if no numbers.
 
 - Counts: "Vera scored 2.60/3.0, a 73% pass rate, while CC scored 2.16/3.0, a 48% pass rate." (DoorDash)
 - Does not count: "domain owners accept 95% of the remaining candidates during review" (DoorDash; the share of proposed evals kept, not a quality result for the agent)
 
 ### 10. adoption
 
-Numbers about use of the agent: users, questions, sessions, time saved, share of company. One row per distinct number. `not stated` if none.
+Numbers about use of the agent: users, questions, sessions, time saved, share of work handled, share of company. Record every stated number within scope [F2]. One row per distinct number. `not stated` if none.
 
 - Counts: "Since launching in early August, Ramp Research has answered over 1,800 data questions across more than 1,200 conversations with 300 different users." (Ramp)
 - Does not count: "OpenAI's data platform serves more than 3.5k internal users" (platform, not agent; G5)
@@ -176,7 +178,7 @@ Features that help users trust or check answers. Pick all that apply.
 | Value | Code when the post says... |
 |---|---|
 | shows its work | the answer includes or links to the SQL or code that produced it, its steps or assumptions, or a preview of the result data (renamed from "shows its SQL or code" after the pilot) |
-| cites sources | the answer names or links the tables, docs, results or source tiers it used |
+| cites sources | the answer names or links the tables, docs, results or source tiers it used. A provenance footer is coded here only [F5]. |
 | access permissions enforced | the agent's data access is limited, by user permissions or by a fixed scope for the agent |
 | human approval step | a person approves the agent's plan, query, action or output before it runs or is used |
 | confidence or warnings | the agent flags uncertainty, missing access, stale data or out-of-scope questions |
@@ -190,7 +192,9 @@ Rule: approval of changes to the knowledge base is not a `human approval step` (
 
 Up to 3 lessons the authors state. Value = a short tag; quote = the lesson verbatim.
 
-Rule: take lessons only from a section titled lessons, learnings or takeaways, or from a sentence where the authors say they learned, found, discovered or realized something, or call it a lesson. Otherwise `not stated`. When there are more than 3, take lessons-section items first, then the framed sentences, each in post order.
+Rule: take lessons only from a lessons section, or from a sentence where the authors say they learned, found, discovered or realized something, or call it a lesson. Otherwise `not stated`. When there are more than 3, take lessons-section items first, then the framed sentences, each in post order.
+
+A lessons section is one whose heading, or whose text before its first sub-heading or list, says it presents lessons, learnings, takeaways or things learned or taken away. The framing word may be in the quoted sentence or the sentence right before it [F4].
 
 - Counts: "We also discovered that highly prescriptive prompting degraded results." (OpenAI)
 - Does not count: "Collapsing the cost of asking a question to near-zero changes who asks, when they ask, and what they ask." (Ramp; an observation, not framed as a lesson)

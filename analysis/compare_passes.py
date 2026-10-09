@@ -8,7 +8,9 @@ How a code is formed:
     quote comes from, so two different cuts of the same sentence agree
   - "not stated" / "none described": the empty set (none described is kept as
     its own code for eval_method)
-Usage: python3 analysis/compare_passes.py analysis/coding.csv analysis/coding_pass2.csv
+Usage: python3 analysis/compare_passes.py analysis/coding_pass1.csv analysis/coding_pass2.csv
+Limit: a long paragraph is one source line, so two passes that cut different
+numbers from the same paragraph count as agreeing (seen in Grab adoption).
 Writes analysis/agreement.json with per-field rates and every disagreement.
 """
 import csv, json, os, re, sys
