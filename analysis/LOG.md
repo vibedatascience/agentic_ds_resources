@@ -108,6 +108,32 @@ The scope limits for Pinecone, Stripe and Grab were not spelled out in Rahul's r
 | Pinecone | users | `not stated`; the post names channels, not users or roles | |
 | Block | adoption | Text says 1,812 and 1,899 Q1 2026 users; the chart shows 1,938 and 2,770. Text coded, mismatch noted in the value | |
 
+## 2026-10-09: Step 4, agreement check (stop condition hit)
+
+Pass 2 (`coding_pass2.csv`, 430 rows, commit `1039dd5`) was coded in a fresh scheduled session told not to open `coding.csv`, `LOG.md` or their history. Its quotes pass `check_quotes.py`. `compare_passes.py` compares the passes; method is in its docstring. Free-text fields are compared by the source sentence each quote comes from, so different cuts of one sentence agree.
+
+| Field | Agreement |
+|---|---|
+| models_named | 100% |
+| users, interface, context_delivery | 93% |
+| main_lesson | 80% |
+| eval_method, adoption, trust_measures | 73% |
+| task_scope, context_sources, tools, eval_size_quality | 67% |
+
+**7 fields are below 80%. The brief's rule is more than 3, so tabulating is on hold until the definitions are fixed.**
+
+38 company-field disagreements are listed in `disagreements.md` with both quotes, a cause and a provisional call: pass 2 right 13, pass 1 right 8, both or mixed 5, unclear under the codebook 12.
+
+### Proposed definition fixes (for Rahul)
+
+| Fix | Causes | Rule |
+|---|---|---|
+| 1 | D1 | Tools "search over docs" only when the post says the agent calls a search tool. Retrieval done for the agent before the prompt is context delivery only. |
+| 2 | D9 | eval_size_quality = set size and correctness numbers only; speed, tokens, steps and cost are out. Adoption = every stated number on use or time saved within scope; record all of them. |
+| 3 | D2, D3, D4 | Code only what the post says the agent does or reads now. Lists of needs, difficulty tiers, platform use cases and raw material distilled into other docs do not count. Multi-step analysis needs a described investigation (root cause, diagnosis, several queries). |
+| 4 | D11 | A lessons section is one whose heading or first sentence names lessons, learnings or takeaways. The framing word may be in the quoted sentence or the one right before it. |
+| 5 | D5, D7, D8 | A provenance footer is "cites sources" only. "Human review" needs people to judge agent outputs; "shown to owners" is not enough. Evaluations of retrieved context are not answer evaluations. Both passes must check screenshots for interface, tools and trust (G3). |
+
 ## Not included
 
 Posts referred to inside the corpus. Not fetched and not added.

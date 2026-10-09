@@ -1,0 +1,656 @@
+{
+ "rates": {
+  "users": 0.9333333333333333,
+  "interface": 0.9333333333333333,
+  "task_scope": 0.6666666666666666,
+  "models_named": 1.0,
+  "context_sources": 0.6666666666666666,
+  "context_delivery": 0.9333333333333333,
+  "tools": 0.6666666666666666,
+  "eval_method": 0.7333333333333333,
+  "eval_size_quality": 0.6666666666666666,
+  "adoption": 0.7333333333333333,
+  "trust_measures": 0.7333333333333333,
+  "main_lesson": 0.8
+ },
+ "disagreements": [
+  {
+   "company": "Spotify",
+   "field": "users",
+   "only_pass1": [
+    {
+     "value": "analysts and PMs",
+     "quote": "More than a quarter of these users haven't even coded SQL before.",
+     "location": "Our data agent"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": true
+  },
+  {
+   "company": "Meta",
+   "field": "interface",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "web app",
+     "quote": "Chats / Recipes / Ingredients / Cookbooks / Boards / Spot checks",
+     "location": "screenshot: image-02.png"
+    }
+   ],
+   "pass1_not_stated": true,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Block",
+   "field": "task_scope",
+   "only_pass1": [
+    {
+     "value": "dashboard or report creation",
+     "quote": "Additional automation use cases include generative UI dashboarding",
+     "location": "Agentic Automations"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Clay",
+   "field": "task_scope",
+   "only_pass1": [
+    {
+     "value": "multi-step analysis",
+     "quote": "Product Managers pull feature adoption metrics and debug funnels.",
+     "location": "monty's reception"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "DoorDash",
+   "field": "task_scope",
+   "only_pass1": [
+    {
+     "value": "experiment review",
+     "quote": "Tier 3: Questions requiring deeper interpretation and accountability, including causal analysis, experiment readouts, committed forecasts, and high-stakes decision support",
+     "location": "Addressing complexity"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "GitHub",
+   "field": "task_scope",
+   "only_pass1": [
+    {
+     "value": "other: data discovery",
+     "quote": "helps teams ramp up quickly on datasets they may be unfamiliar with",
+     "location": "Intro"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "multi-step analysis",
+     "quote": "ANALYTICS AGENT / Qubot / reasoning · planning / tool orchestration",
+     "location": "diagram: image-01.png"
+    },
+    {
+     "value": "dashboard or report creation",
+     "quote": "All the results are also stored as a markdown report in a pull request",
+     "location": "User interface"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Stripe",
+   "field": "task_scope",
+   "only_pass1": [
+    {
+     "value": "answer a question with SQL",
+     "quote": "querying data warehouses, researching accounts before sales calls, triaging incidents, modeling revenue scenarios",
+     "location": "Intro"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "other: data analysis",
+     "quote": "And across Stripe, more than 5,000 sessions everyday center on data analysis.",
+     "location": "Impact"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Anthropic",
+   "field": "context_sources",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "past queries",
+     "quote": "Query corpus: historical SQL from dashboards, notebooks, and prior analyses.",
+     "location": "How Anthropic enables self-service data analytics with Claude > Sources of truth"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "DoorDash",
+   "field": "context_sources",
+   "only_pass1": [
+    {
+     "value": "metric definitions or semantic layer",
+     "quote": "But a strong semantic data layer is key to ensuring these agents pull truthful answers that the business can trust.",
+     "location": "Why we built in-house"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Grab",
+   "field": "context_sources",
+   "only_pass1": [
+    {
+     "value": "table and column docs",
+     "quote": "committed both a certified-context table reference and a golden-dataset test case",
+     "location": "Context that maintains itself"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "past analyses or docs",
+     "quote": "Importantly, it also scans internal context for what teams changed on the ground",
+     "location": "Loops that run unattended"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Kikoff",
+   "field": "context_sources",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "human-written domain notes",
+     "quote": "The agent is loaded with company-specific domain context — metric definitions, which directional movements are positive vs. negative",
+     "location": "Agent 3: the Business Analyst"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Snap",
+   "field": "context_sources",
+   "only_pass1": [
+    {
+     "value": "past queries",
+     "quote": "It names the pipeline that produces the table and links the query that defines it",
+     "location": "What the agent knows"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Grab",
+   "field": "context_delivery",
+   "only_pass1": [
+    {
+     "value": "curated files the agent reads",
+     "quote": "We configure a system prompt, a set of context files, a model, the MCP connections and an interface once",
+     "location": "Analysts as builders"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "GitHub",
+   "field": "tools",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "other: pull request creation",
+     "quote": "All the results are also stored as a markdown report in a pull request",
+     "location": "User interface"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "OpenAI",
+   "field": "tools",
+   "only_pass1": [
+    {
+     "value": "search over docs",
+     "quote": "A retrieval service handles access control and caching at runtime, enabling the agent to efficiently and safely pull in this information.",
+     "location": "Layer #4: Institutional Knowledge"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Pinecone",
+   "field": "tools",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "other: correction submission",
+     "quote": "a single `semantic_layer_feedback` tool that submits corrections back to Nexus for knowledge amendments.",
+     "location": "The migration"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Ramp",
+   "field": "tools",
+   "only_pass1": [
+    {
+     "value": "search over docs",
+     "quote": "We aggregated and indexed this metadata, allowing the agent to fetch the right models and form precise queries.",
+     "location": "Defining the Search Space"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Stripe",
+   "field": "tools",
+   "only_pass1": [
+    {
+     "value": "SQL execution",
+     "quote": "querying data warehouses, researching accounts before sales calls, triaging incidents, modeling revenue scenarios",
+     "location": "Intro"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Kikoff",
+   "field": "eval_method",
+   "only_pass1": [
+    {
+     "value": "human review",
+     "quote": "each tightening the instructions based on cases where the output was wrong or vague",
+     "location": "What We Learnt (the hard way 😛)"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "none described",
+     "quote": "",
+     "location": ""
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Pinecone",
+   "field": "eval_method",
+   "only_pass1": [
+    {
+     "value": "LLM judge",
+     "quote": "\"match_type\": \"llm_judge\"",
+     "location": "The migration"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Snap",
+   "field": "eval_method",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "human review",
+     "quote": "Human review",
+     "location": "diagram: image-02.webp"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Spotify",
+   "field": "eval_method",
+   "only_pass1": [
+    {
+     "value": "human review",
+     "quote": "the questions, answers, generated SQL and user feedback are shown to cluster owners",
+     "location": "Closing the loop"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Anthropic",
+   "field": "eval_size_quality",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "raw query corpus access moved accuracy under 1 point",
+     "quote": "Accuracy moved by less than a point in either direction.",
+     "location": "How Anthropic enables self-service data analytics with Claude > Ablation techniques"
+    },
+    {
+     "value": "eval set size: a few dozen per topic",
+     "quote": "we've found there are diminishing returns past a few dozen per topic (e.g., \"growth\"), and that ceiling drops with each new model generation.",
+     "location": "How Anthropic enables self-service data analytics with Claude > Offline evaluations"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Block",
+   "field": "eval_size_quality",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "40 finance leadership questions",
+     "quote": "We started by collecting 40 real business questions that Block's finance and strategy leadership actually asks on a recurring basis.",
+     "location": "40 Questions, 100% Accuracy"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "DoorDash",
+   "field": "eval_size_quality",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "ablations on 100-question subset",
+     "quote": "These ablations run on a 100-question subset, so differences of a few points are within our definition of noise.",
+     "location": "Why we built in-house"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Pinecone",
+   "field": "eval_size_quality",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "token usage down over 92%",
+     "quote": "Token usage dropped by over 92%.",
+     "location": "Intro"
+    },
+    {
+     "value": "query turns down 78%",
+     "quote": "Query turns dropped by 78%.",
+     "location": "Intro"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Vercel",
+   "field": "eval_size_quality",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "3.5x faster",
+     "quote": "Avg execution time | 274.8s | 77.4s | 3.5x faster",
+     "location": "3.5x faster, 37% fewer tokens, 100% success rate"
+    },
+    {
+     "value": "37% fewer tokens",
+     "quote": "Avg token usage | ~102k tokens | ~61k tokens | 37% fewer tokens",
+     "location": "3.5x faster, 37% fewer tokens, 100% success rate"
+    },
+    {
+     "value": "42% fewer steps",
+     "quote": "Avg steps | ~12 steps | ~7 steps | 42% fewer steps",
+     "location": "3.5x faster, 37% fewer tokens, 100% success rate"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Grab",
+   "field": "adoption",
+   "only_pass1": [
+    {
+     "value": "mechanical share of analyst tickets fell from 44% to 30%",
+     "quote": "In February, 44% of the tickets our analysts closed were mechanical (data preparation, alerting, reporting); by June, that share had fallen to 30%.",
+     "location": "The path forward"
+    },
+    {
+     "value": "ticket cycle times down about 33%",
+     "quote": "Importantly, our cycle times reduced by ~33%.",
+     "location": "The path forward"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Pinecone",
+   "field": "adoption",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "~49% follow-up runs",
+     "quote": "Follow-up runs (chained conversations) | ~49%",
+     "location": "AskData V1: Building the Knowledge Layer"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Ramp",
+   "field": "adoption",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "thousands of questions per month",
+     "quote": "is now answering thousands of questions per month",
+     "location": "Intro"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Stripe",
+   "field": "adoption",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "25,000 hours per year shifted",
+     "quote": "In aggregate, Kai has helped shift 25,000 hours per year from administrative work, to revenue generating work.",
+     "location": "Impact"
+    },
+    {
+     "value": "GTM new hires use it 2.7x more",
+     "quote": "New hires on GTM are Kai-native: they use it 2.7x more",
+     "location": "Impact"
+    },
+    {
+     "value": "AEs: 2x activity, +17% opps, +26% revenue opps, +39% deals",
+     "quote": "they produce 2x the sales activity, create 17% more opportunities, generate 26% more revenue opportunities, and close 39% more deals",
+     "location": "Impact"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Block",
+   "field": "trust_measures",
+   "only_pass1": [
+    {
+     "value": "cites sources",
+     "quote": "They can see who owns it, how it has been validated, and what audience it was designed for.",
+     "location": "Governance as a Foundation, Not an Afterthought"
+    },
+    {
+     "value": "human approval step",
+     "quote": "This allows a human in the loop to verify the SQL and the data experts they could consult with to verify its accuracy.",
+     "location": "Query Expert MCP: Exploratory Analysis for Technical Users"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Clay",
+   "field": "trust_measures",
+   "only_pass1": [
+    {
+     "value": "cites sources",
+     "quote": "It then provides a provenance footer, helping the end-user quickly intuit how it arrived at this answer and how much they should trust it.",
+     "location": "Ingredient 4: a system prompt that emulates a data scientist"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "shows its work",
+     "quote": "It then provides a provenance footer, helping the end-user quickly intuit how it arrived at this answer and how much they should trust it.",
+     "location": "Ingredient 4: a system prompt that emulates a data scientist"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Grab",
+   "field": "trust_measures",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "human approval step",
+     "quote": "Looks Good - Run Tests / Edit Parameters",
+     "location": "screenshot: image-02.png"
+    },
+    {
+     "value": "shows its work",
+     "quote": "Trace / 17 tools · 139s",
+     "location": "screenshot: image-02.png"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Ramp",
+   "field": "trust_measures",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "confidence or warnings",
+     "quote": "I need to explain that I cannot provide the cardholder names due to Ramp's data masking policy",
+     "location": "screenshot: ramp-research-response-screenshot.png"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Anthropic",
+   "field": "main_lesson",
+   "only_pass1": [
+    {
+     "value": "refresh skills continuously",
+     "quote": "The single most important architectural decision we made was to treat skill files as served content, refreshed continuously, rather than something shipped once and forgotten.",
+     "location": "Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Refresh skills as often as you refresh your data models"
+    },
+    {
+     "value": "add analysis skills, not only data skills",
+     "quote": "We quickly determined that approach would provide correct numbers, but stop short of useful insights.",
+     "location": "Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Give the agent skills beyond knowing what to query"
+    },
+    {
+     "value": "connect business context",
+     "quote": "connecting Claude Tag to them is the highest-leverage information you can add after the warehouse itself",
+     "location": "Self-service data analytics in Slack: how Anthropic deploys Claude Tag for ad-hoc questions > Connect to business context, not just the warehouse"
+    }
+   ],
+   "only_pass2": [
+    {
+     "value": "governance must be enforced",
+     "quote": "We've found the foundations only hold if the canonical models and metric definitions are enforced by tooling",
+     "location": "How Anthropic enables self-service data analytics with Claude > Data foundations"
+    },
+    {
+     "value": "raw query history barely helps",
+     "quote": "In practice, we found that giving the agent raw retrieval access to thousands of prior queries moved accuracy by less than a point",
+     "location": "How Anthropic enables self-service data analytics with Claude > Sources of truth"
+    },
+    {
+     "value": "few dozen evals per topic suffice",
+     "quote": "we've found there are diminishing returns past a few dozen per topic (e.g., \"growth\"), and that ceiling drops with each new model generation.",
+     "location": "How Anthropic enables self-service data analytics with Claude > Offline evaluations"
+    }
+   ],
+   "pass1_not_stated": false,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Grab",
+   "field": "main_lesson",
+   "only_pass1": [],
+   "only_pass2": [
+    {
+     "value": "context is critical",
+     "quote": "Realising the criticality of this, we have dedicated platform investment, as well as dedicated functional bandwidth to generate context docs.",
+     "location": "Context that maintains itself"
+    }
+   ],
+   "pass1_not_stated": true,
+   "pass2_not_stated": false
+  },
+  {
+   "company": "Stripe",
+   "field": "main_lesson",
+   "only_pass1": [
+    {
+     "value": "three things to get right",
+     "quote": "scaling expertise without centralizing it, meeting users wherever they work, and enforcing guardrails that don't exist in code",
+     "location": "Why we built a Knowledge AI Platform"
+    }
+   ],
+   "only_pass2": [],
+   "pass1_not_stated": false,
+   "pass2_not_stated": true
+  }
+ ]
+}
